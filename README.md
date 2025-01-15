@@ -25,4 +25,4 @@ This is the personal website of Achyut Neupane, a passionate Web Designer and De
 Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/manojneupaneweb/achyut-neupane-website.git
+git clone https://github.com/manojneupaneweb/manojneupane.git
