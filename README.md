@@ -21,7 +21,7 @@ The website showcases Manoj's skills, projects, services, and provides a way to 
 - **HTML5**  
 - **Tailwind css**  
 - **Font Awesome** for icons  
-- **ejs** for icons  
+- **ejs**  
 ---
 
 ## 🚀 Installation
