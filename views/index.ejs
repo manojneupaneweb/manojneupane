@@ -6,20 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Manoj Neupane</title>
   <link rel="shortcut icon" href="/img/logo.png" type="image/x-icon">
-
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
   <link rel="stylesheet" href="/style.css" />
 </head>
 
-<body class="flex" style="scroll-behavior: smooth !important">
-  <!-- Mobile Floating Menu Button -->
+<body class="flex">
   <header class="lg:hidden fixed top-3 right-3 z-50">
-    <button id="menuBtn" class="text-2xl text-black bg-white py-1 px-2 rounded shadow focus:outline-none">
+    <button id="menuBtn" class="text-2xl text-black bg-white py-1 px-2 rounded shadow">
       <i class="fa-solid fa-bars"></i>
     </button>
   </header>
-
 
   <div id="sidebar"
     class="fixed lg:static top-0 left-0 w-64 lg:w-1/4 min-h-screen bg-gray-900 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-40">
@@ -36,7 +33,6 @@
                 <%- include('partials/footer') %>
   </main>
 
-  <!-- Script for menu toggle -->
   <script>
     const menuBtn = document.getElementById("menuBtn");
     const menuIcon = menuBtn.querySelector("i");
@@ -45,18 +41,17 @@
 
     menuBtn.addEventListener("click", () => {
       sidebar.classList.toggle("-translate-x-full");
-
-      if (menuIcon.classList.contains("fa-bars")) {
-        menuIcon.classList.remove("fa-bars");
-        menuIcon.classList.add("fa-xmark");
-      } else {
-        menuIcon.classList.remove("fa-xmark");
-        menuIcon.classList.add("fa-bars");
-      }
+      menuIcon.classList.toggle("fa-bars");
+      menuIcon.classList.toggle("fa-xmark");
     });
 
     navLinks.forEach(link => {
-      link.addEventListener("click", () => {
+      link.addEventListener("click", e => {
+        const targetId = link.getAttribute("href");
+        if (targetId && targetId.startsWith("#")) {
+          e.preventDefault();
+          document.querySelector(targetId).scrollIntoView({ behavior: "smooth" });
+        }
         if (window.innerWidth < 1024) {
           sidebar.classList.add("-translate-x-full");
           menuIcon.classList.remove("fa-xmark");

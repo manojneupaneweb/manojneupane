@@ -1,5 +1,4 @@
 <nav class="flex flex-col h-screen items-center py-10 space-y-10">
-  <!-- Profile -->
   <div class="text-gray-300">
     <img src="/../img/logo.png" alt="logo"
       class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-blue-700 cursor-pointer" />
@@ -7,35 +6,54 @@
     <p class="text-center text-sm">Full Stack Developer</p>
   </div>
 
-  <!-- Social -->
   <div class="mt-auto w-full px-8">
     <div class="flex justify-center space-x-5">
-      <a href="https://github.com/manojneupaneweb" target="_blank" class="text-gray-400 hover:text-blue-400"><i class="fab fa-github fa-lg"></i></a>
-      <a href="https://www.linkedin.com/in/manoj-neupane-52162921a/" target="_blank" class="text-gray-400 hover:text-blue-400"><i class="fab fa-linkedin fa-lg"></i></a>
+      <a href="https://github.com/manojneupaneweb" target="_blank" class="text-gray-400 hover:text-blue-400"><i
+          class="fab fa-github fa-lg"></i></a>
+      <a href="https://www.linkedin.com/in/manoj-neupane-52162921a/" target="_blank"
+        class="text-gray-400 hover:text-blue-400"><i class="fab fa-linkedin fa-lg"></i></a>
       <a href="#" class="text-gray-400 hover:text-blue-400"><i class="fab fa-twitter fa-lg"></i></a>
       <a href="#" class="text-gray-400 hover:text-blue-400"><i class="fab fa-instagram fa-lg"></i></a>
     </div>
   </div>
 
-  <!-- Links -->
   <div class="flex flex-col w-full px-8 space-y-2">
-    <a href="#home" class="nav-item text-gray-300 hover:text-blue-400 flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-800">
+    <a href="#home"
+      class="nav-item text-gray-300 hover:text-blue-400 flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-800">
       <i class="fa-solid fa-house w-6 text-center"></i><span>Home</span>
     </a>
-    <a href="#about" class="nav-item text-gray-300 hover:text-blue-400 flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-800">
+    <a href="#about"
+      class="nav-item text-gray-300 hover:text-blue-400 flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-800">
       <i class="fa-solid fa-user w-6 text-center"></i><span>About</span>
     </a>
-    <a href="#skills" class="nav-item text-gray-300 hover:text-blue-400 flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-800">
+    <a href="#skills"
+      class="nav-item text-gray-300 hover:text-blue-400 flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-800">
       <i class="fa-solid fa-code w-6 text-center"></i><span>Skills</span>
     </a>
-    <a href="#services" class="nav-item text-gray-300 hover:text-blue-400 flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-800">
+    <a href="#services"
+      class="nav-item text-gray-300 hover:text-blue-400 flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-800">
       <i class="fa-solid fa-briefcase w-6 text-center"></i><span>Services</span>
     </a>
-    <a href="#projects" class="nav-item text-gray-300 hover:text-blue-400 flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-800">
+    <a href="#projects"
+      class="nav-item text-gray-300 hover:text-blue-400 flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-800">
       <i class="fa-solid fa-layer-group w-6 text-center"></i><span>Projects</span>
     </a>
-    <a href="#contact" class="nav-item text-gray-300 hover:text-blue-400 flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-800">
+    <a href="#contact"
+      class="nav-item text-gray-300 hover:text-blue-400 flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-800">
       <i class="fa-solid fa-envelope w-6 text-center"></i><span>Contact</span>
     </a>
   </div>
 </nav>
+
+<script>
+  document.querySelectorAll('.nav-item').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href');
+      document.querySelector(targetId).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    });
+  });
+</script>
