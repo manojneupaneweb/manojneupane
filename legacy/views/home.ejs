@@ -1,0 +1,136 @@
+<div class="m-0 p-0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth
+    }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.85) 0%, rgba(139, 92, 246, 0.85) 100%)
+    }
+
+    .typing-cursor {
+      animation: blink 1s infinite
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0
+      }
+    }
+
+    .btn-hover-effect {
+      transition: all .3s ease;
+      transform: translateY(0)
+    }
+
+    .btn-hover-effect:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, .2)
+    }
+
+    .scroll-indicator {
+      animation: bounce 2s infinite
+    }
+
+    @keyframes bounce {
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0)
+      }
+
+      40% {
+        transform: translateY(-15px)
+      }
+
+      60% {
+        transform: translateY(-8px)
+      }
+    }
+  </style>
+
+  <section class="relative min-h-[calc(100vh-50px)] flex flex-col justify-between overflow-hidden" id="home">
+    <div class="absolute inset-0 z-0">
+      <img src="/img/profile.jpeg" class="object-cover w-full h-full hero-gradient" alt="Profile">
+      <div class="absolute inset-0 bg-black opacity-60"></div>
+    </div>
+
+    <div
+      class="relative z-10 flex flex-col justify-center items-center text-center text-white px-6 py-16 max-w-6xl mx-auto mt-20">
+      <div>
+        <p class="text-xl md:text-2xl font-semibold mb-6">
+          <span class="text-gray-300">I'm </span>
+          <span id="dynamic-title" class="text-blue-400 font-bold"></span>
+          <span class="typing-cursor">|</span>
+        </p>
+
+        <p class="text-lg text-gray-200 max-w-xl mx-auto mb-8">
+          Explore my portfolio showcasing modern, responsive websites with clean design, seamless functionality, and
+          engaging user experiences.
+        </p>
+
+        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-20 justify-center mb-8">
+          <a href="#projects"
+            class="btn-hover-effect bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full shadow-lg font-medium transition flex items-center justify-center">
+            <span>View Projects</span>
+            <i class="fas fa-arrow-down ml-2"></i>
+          </a>
+          <a href="#contact"
+            class="btn-hover-effect bg-transparent hover:bg-white/10 border-2 border-white text-white px-8 py-4 rounded-full shadow-lg font-medium transition flex items-center justify-center">
+            <span>Contact Me</span>
+            <i class="fas fa-paper-plane ml-2"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="flex justify-center mt-20 scroll-indicator">
+        <a href="#about" class="flex flex-col items-center text-white">
+          <span class="text-sm mb-2">Scroll Down</span>
+          <i class="fas fa-chevron-down text-xl"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const titles = ['Web Designer', 'Web Developer', 'Freelancer'];
+    let index = 0, charIndex = 0, isDeleting = false;
+    const speed = 120, eraseSpeed = 70, delay = 1500;
+    function typeEffect() {
+      const titleEl = document.getElementById("dynamic-title");
+      if (!titleEl) return;
+      const current = titles[index];
+      if (!isDeleting) {
+        titleEl.textContent = current.substring(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === current.length) {
+          isDeleting = true;
+          setTimeout(typeEffect, delay);
+          return;
+        }
+      } else {
+        titleEl.textContent = current.substring(0, charIndex);
+        charIndex--;
+        if (charIndex < 0) {
+          isDeleting = false;
+          index = (index + 1) % titles.length;
+          charIndex = 0;
+        }
+      }
+      setTimeout(typeEffect, isDeleting ? eraseSpeed : speed);
+    }
+    document.addEventListener("DOMContentLoaded", typeEffect);
+  </script>
+</div>
