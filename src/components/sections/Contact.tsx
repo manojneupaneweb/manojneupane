@@ -20,7 +20,7 @@ export function Contact() {
             <a
               href={`https://github.com/${siteConfig.github}`}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="btn-secondary"
             >
               <FiGithub /> GitHub
@@ -28,7 +28,7 @@ export function Contact() {
             <a
               href={`https://linkedin.com/in/${siteConfig.linkedin}`}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="btn-secondary"
             >
               <FiLinkedin /> LinkedIn

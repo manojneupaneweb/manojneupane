@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /legacy/
+Disallow: /dist/
+
+Sitemap: https://manoj-neupane.com.np/sitemap.xml

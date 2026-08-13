@@ -15,16 +15,19 @@ export function Journey() {
         <a
           href={company.url}
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           data-reveal
           className="mb-10 flex flex-col sm:flex-row sm:items-center gap-5 rounded-2xl border border-line bg-bg p-5 md:p-6 hover:border-blue/35 transition-colors max-w-3xl mx-auto"
         >
           <div className="flex h-16 w-16 sm:h-20 sm:w-20 shrink-0 items-center justify-center rounded-xl bg-white border border-line p-2">
             <img
               src={company.logo}
-              alt={`${company.name} logo`}
+              alt={`${company.name} company logo`}
+              width={80}
+              height={80}
               className="max-h-full max-w-full object-contain"
               loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="flex-1 min-w-0">

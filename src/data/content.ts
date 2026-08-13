@@ -9,7 +9,7 @@ export const siteConfig = {
   github: 'manojneupaneweb',
   linkedin: 'manoj-neupane-52162921a',
   availability: 'Available for freelance & SaaS projects',
-  resumeUrl: '/resume.pdf',
+  resumeUrl: '/img/resume.png',
 }
 
 export const navLinks = [
@@ -23,7 +23,7 @@ export const navLinks = [
 export const company = {
   name: 'Softworica',
   url: 'https://softworica.com',
-  logo: 'https://softworica.com/images/logo.webp',
+  logo: '/img/softworica-logo.webp',
   role: 'Software Developer',
   period: 'Present',
   description:

@@ -85,7 +85,21 @@ body {
   @apply inline-flex items-center justify-center gap-2 px-3 py-3 rounded-lg text-sm font-semibold transition-colors duration-200 text-body hover:text-blue;
 }
 
-@media (prefers-reduced-motion: reduce) {
+.skip-link:focus {
+  position: fixed !important;
+  left: 1rem !important;
+  top: 1rem !important;
+  z-index: 10000;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  padding: 0.75rem 1rem;
+  background: var(--color-navy);
+  color: white;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
   *,
   *::before,
   *::after {

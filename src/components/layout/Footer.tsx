@@ -34,7 +34,7 @@ export function Footer() {
           <a
             href={`https://github.com/${siteConfig.github}`}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             aria-label="GitHub"
             className="hover:text-blue transition-colors"
           >
@@ -43,7 +43,7 @@ export function Footer() {
           <a
             href={`https://linkedin.com/in/${siteConfig.linkedin}`}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             aria-label="LinkedIn"
             className="hover:text-blue transition-colors"
           >

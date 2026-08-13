@@ -1,6 +1,5 @@
 import { Suspense, lazy } from 'react'
-import { siteConfig } from '@/data/content'
-import { HiArrowDown, HiArrowRight, HiDownload } from 'react-icons/hi'
+import { HiArrowDown, HiArrowRight } from 'react-icons/hi'
 
 const HeroLaptop = lazy(() =>
   import('@/components/three/HeroLaptop').then((m) => ({ default: m.HeroLaptop })),
@@ -38,9 +37,6 @@ export function Hero() {
             <a href="#contact" className="btn-secondary">
               Let's Talk
             </a>
-            <a href={siteConfig.resumeUrl} className="btn-ghost" download>
-              <HiDownload /> Resume
-            </a>
           </div>
         </div>
 
@@ -58,7 +54,7 @@ export function Hero() {
       </div>
 
       <a
-        href="#about"
+        href="#experience"
         className="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-muted hover:text-blue transition-colors"
       >
         <span className="text-[10px] uppercase tracking-[0.25em] font-semibold">Scroll</span>

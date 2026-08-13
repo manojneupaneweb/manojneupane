@@ -48,7 +48,7 @@ export function PersonalProject() {
             <a
               href="https://linktogovernment.com/en"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="btn-primary"
             >
               Visit linktogovernment.com <FiExternalLink />
@@ -58,7 +58,7 @@ export function PersonalProject() {
           <a
             href="https://linktogovernment.com/en"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="block rounded-xl border border-line bg-bg p-5 hover:border-blue/35 transition-colors"
           >
             <div className="rounded-lg bg-navy text-white p-5 mb-4">

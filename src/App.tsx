@@ -7,6 +7,7 @@ import { About } from '@/components/sections/About'
 import { Engineering } from '@/components/sections/Engineering'
 import { Stack } from '@/components/sections/Stack'
 import { Projects } from '@/components/sections/Projects'
+import { GitHubSection } from '@/components/sections/GitHubSection'
 import { BehindInterface } from '@/components/sections/BehindInterface'
 import { Journey } from '@/components/sections/Journey'
 import { PersonalProject } from '@/components/sections/PersonalProject'
@@ -22,7 +23,7 @@ export default function App() {
     <>
       <CustomCursor />
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
         <Quote />
         <Journey />
@@ -30,6 +31,7 @@ export default function App() {
         <Engineering />
         <Stack />
         <Projects />
+        <GitHubSection />
         <BehindInterface />
         <PersonalProject />
         <Services />
