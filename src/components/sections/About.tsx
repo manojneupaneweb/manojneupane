@@ -1,66 +1,61 @@
-import { motion } from 'framer-motion'
-import { SectionHeader } from '@/components/ui/Primitives'
-import { aboutTimeline } from '@/data/content'
+import { lazy, Suspense } from 'react'
+import { SectionIntro } from '@/components/ui/Primitives'
+import { philosophy, siteConfig } from '@/data/content'
+
+const WorkspaceScene = lazy(() =>
+  import('@/components/three/WorkspaceScene').then((m) => ({ default: m.WorkspaceScene })),
+)
 
 export function About() {
   return (
-    <section id="about" className="section-padding relative">
-      <div className="max-w-7xl mx-auto">
-        <SectionHeader
-          label="About"
-          title="Engineer. Problem Solver. Builder."
-          subtitle="I don't just write code — I build systems that businesses run on."
-        />
+    <section id="about" className="section bg-surface border-y border-line">
+      <div className="container-x">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div data-reveal>
+            <SectionIntro
+              label="About"
+              title="The person behind the code."
+              lead="Short version: I ship production software for real organizations."
+            />
 
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
-          <div data-reveal className="space-y-6">
-            <p className="text-lg text-muted leading-relaxed">
-              I'm <span className="text-white font-medium">Manoj Neupane</span>, a Full Stack Developer
-              and IT student from Nepal. I specialize in building production software — from SaaS platforms
-              and business management systems to school portals and authentication infrastructure.
-            </p>
-            <p className="text-lg text-muted leading-relaxed">
-              My approach is simple: understand the business problem first, architect a clean solution,
-              and ship software that performs reliably in production. I work primarily with{' '}
-              <span className="text-electric">Laravel</span>,{' '}
-              <span className="text-purple">React</span>,{' '}
-              <span className="text-cyan">Tailwind CSS</span>, and{' '}
-              <span className="text-white">MySQL</span> — but I choose tools based on what the project needs.
-            </p>
-            <p className="text-lg text-muted leading-relaxed">
-              From inventory management and student result portals to upcoming medical SaaS products,
-              every project I build is designed with clean architecture, performance, and real-world usability in mind.
-            </p>
-
-            <div className="grid grid-cols-2 gap-4 pt-6">
-              {['Laravel', 'React', 'SaaS', 'REST APIs', 'MySQL', 'Deployment'].map((tag) => (
-                <div key={tag} className="glass rounded-xl px-4 py-3 text-sm text-muted hover:text-white transition-colors">
-                  {tag}
+            <div className="grid grid-cols-2 gap-3 mb-8">
+              {[
+                ['Name', siteConfig.name],
+                ['Role', 'Full Stack Web Developer'],
+                ['Based', siteConfig.location],
+                ['Status', 'IT Student'],
+              ].map(([k, v]) => (
+                <div key={k} className="rounded-xl border border-line bg-bg px-4 py-3">
+                  <p className="text-[11px] uppercase tracking-wider text-muted mb-1">{k}</p>
+                  <p className="text-sm font-semibold text-ink">{v}</p>
                 </div>
               ))}
             </div>
+
+            <p className="text-body leading-relaxed mb-6 max-w-lg">
+              I start with the business problem, then design architecture that holds up
+              in production — not just a polished interface.
+            </p>
+
+            <ul className="grid sm:grid-cols-2 gap-2">
+              {philosophy.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-center gap-2 text-sm text-ink font-medium"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <div className="relative">
-            <div className="absolute left-6 top-0 bottom-0 w-px bg-white/10" />
-            <div className="space-y-8">
-              {aboutTimeline.map((item, i) => (
-                <motion.div
-                  key={item.year}
-                  data-reveal
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '-50px' }}
-                  transition={{ delay: i * 0.1, duration: 0.6 }}
-                  className="relative pl-16"
-                >
-                  <div className="absolute left-4 top-2 w-4 h-4 rounded-full border-2 border-electric bg-void" />
-                  <span className="text-xs text-cyan font-medium tracking-wider">{item.year}</span>
-                  <h3 className="text-xl font-display font-semibold text-white mt-1 mb-2">{item.title}</h3>
-                  <p className="text-muted leading-relaxed">{item.description}</p>
-                </motion.div>
-              ))}
-            </div>
+          <div data-reveal className="relative h-[320px] sm:h-[400px] rounded-2xl bg-bg border border-line">
+            <Suspense fallback={<div className="absolute inset-0 bg-muted-bg animate-pulse" />}>
+              <div className="absolute inset-0">
+                <WorkspaceScene />
+              </div>
+            </Suspense>
           </div>
         </div>
       </div>

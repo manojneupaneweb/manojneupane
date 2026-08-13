@@ -1,16 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-display: "Space Grotesk", system-ui, sans-serif;
-  --color-void: #050505;
-  --color-charcoal: #0f0f12;
-  --color-surface: #14141a;
-  --color-muted: #8b8b9a;
-  --color-electric: #3b82f6;
-  --color-purple: #8b5cf6;
-  --color-cyan: #22d3ee;
-  --color-soft: #f4f4f5;
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --font-display: "Outfit", system-ui, sans-serif;
+
+  --color-bg: #f7f8fa;
+  --color-surface: #ffffff;
+  --color-muted-bg: #eef1f5;
+  --color-ink: #111827;
+  --color-body: #4b5563;
+  --color-muted: #6b7280;
+  --color-line: #e5e7eb;
+  --color-navy: #0f172a;
+  --color-navy-soft: #1e293b;
+  --color-blue: #2563eb;
+  --color-indigo: #4f46e5;
 }
 
 * {
@@ -32,62 +36,53 @@ html.lenis body {
 
 body {
   margin: 0;
-  background: var(--color-void);
-  color: var(--color-soft);
+  background: var(--color-bg);
+  color: var(--color-ink);
   font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background: rgba(59, 130, 246, 0.35);
-  color: white;
+  background: rgba(37, 99, 235, 0.15);
+  color: var(--color-ink);
 }
 
-.glass {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px);
-}
-
-.glow-blue {
-  box-shadow: 0 0 40px rgba(59, 130, 246, 0.15);
-}
-
-.glow-cyan {
-  box-shadow: 0 0 30px rgba(34, 211, 238, 0.12);
-}
-
-.text-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 45%, #22d3ee 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.section-padding {
-  @apply px-6 md:px-12 lg:px-20 py-24 md:py-32;
-}
-
-.section-label {
-  @apply text-xs uppercase tracking-[0.3em] text-cyan font-medium mb-4 block;
-}
-
-.section-title {
+.font-display {
   font-family: var(--font-display);
-  @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6;
 }
 
-.section-subtitle {
-  @apply text-lg md:text-xl text-muted max-w-2xl leading-relaxed;
+.section {
+  @apply px-5 sm:px-8 lg:px-12 py-20 md:py-28;
 }
 
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
+.container-x {
+  @apply max-w-6xl mx-auto w-full;
+}
+
+.label {
+  @apply text-[11px] font-semibold uppercase tracking-[0.22em] text-blue mb-4 block;
+}
+
+.heading {
+  font-family: var(--font-display);
+  @apply text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-ink leading-[1.1] mb-4;
+}
+
+.lead {
+  @apply text-base md:text-lg text-body max-w-xl leading-relaxed;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-sm font-semibold transition-colors duration-200 bg-navy text-white hover:bg-blue;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-sm font-semibold transition-colors duration-200 bg-surface text-ink border border-line hover:border-blue/40 hover:text-blue;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 px-3 py-3 rounded-lg text-sm font-semibold transition-colors duration-200 text-body hover:text-blue;
 }
 
 @media (prefers-reduced-motion: reduce) {

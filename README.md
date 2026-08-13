@@ -1,52 +1,32 @@
-# Manoj Neupane — Premium Portfolio
+# Manoj Neupane — Software Engineer Portfolio
 
-A next-generation portfolio website built with React, TypeScript, Vite, Tailwind CSS, GSAP, Three.js, and Framer Motion.
+Clean, professional portfolio with purposeful scroll-based 3D storytelling.
 
-## Tech Stack
+## Stack
 
-- **React 19** + **TypeScript** + **Vite**
-- **Tailwind CSS 4** — dark-mode-first design system
-- **GSAP** + **ScrollTrigger** — scroll-based animations
-- **Three.js** + **React Three Fiber** — immersive hero scene
-- **Framer Motion** — UI micro-interactions
-- **Lenis** — smooth scrolling
+- React 19 + TypeScript + Vite
+- Tailwind CSS 4
+- React Three Fiber + Three.js
+- GSAP ScrollTrigger + Lenis
+- Framer Motion (light use)
 
-## Getting Started
+## Run
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173)
-
-## Build
-
-```bash
-npm run build
-npm run preview
-```
+Open http://localhost:5173
 
 ## Sections
 
-- Hero with 3D background & floating stat cards
-- About with interactive timeline
-- Skills orbit visualization
-- Featured production projects
-- Experience timeline
-- Services / What I Build
-- Development process
-- Animated statistics
-- Testimonials
-- Live GitHub integration
-- Blog (future-ready)
-- Contact form
-- Premium footer
-
-## Deployment
-
-Configured for Vercel. Push to deploy.
-
-## Legacy
-
-The previous Express + EJS portfolio is preserved in `/legacy`.
+1. Hero — 3D laptop with code screen
+2. About — developer workspace scene
+3. From Idea → Software — interactive architecture graph
+4. Tech Stack — layered interactive tools
+5. Projects — 3D laptop case-study showcase
+6. Behind the Interface — system network
+7. Journey — clean timeline
+8. Services — minimal list
+9. Contact — simple CTA

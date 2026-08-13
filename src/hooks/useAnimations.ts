@@ -6,55 +6,61 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 export function useLenis() {
-  const lenisRef = useRef<Lenis | null>(null)
+  const ref = useRef<Lenis | null>(null)
 
   useEffect(() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduced) return
+
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 1.1,
       smoothWheel: true,
     })
-
-    lenisRef.current = lenis
+    ref.current = lenis
     lenis.on('scroll', ScrollTrigger.update)
 
-    const raf = (time: number) => {
+    let raf = 0
+    const loop = (time: number) => {
       lenis.raf(time)
-      requestAnimationFrame(raf)
+      raf = requestAnimationFrame(loop)
     }
-    requestAnimationFrame(raf)
+    raf = requestAnimationFrame(loop)
 
     return () => {
+      cancelAnimationFrame(raf)
       lenis.destroy()
     }
   }, [])
 
-  return lenisRef
+  return ref
 }
 
-export function useScrollReveal() {
+export function useReveal() {
   useEffect(() => {
-    const elements = document.querySelectorAll('[data-reveal]')
-    elements.forEach((el) => {
-      gsap.fromTo(
+    const els = document.querySelectorAll('[data-reveal]')
+    const triggers: ScrollTrigger[] = []
+
+    els.forEach((el) => {
+      const tween = gsap.fromTo(
         el,
-        { y: 60, opacity: 0 },
+        { y: 28, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1,
-          ease: 'power3.out',
+          duration: 0.7,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: el,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse',
+            start: 'top 88%',
+            toggleActions: 'play none none none',
           },
         },
       )
+      if (tween.scrollTrigger) triggers.push(tween.scrollTrigger)
     })
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill())
+      triggers.forEach((t) => t.kill())
     }
   }, [])
 }

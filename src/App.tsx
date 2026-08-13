@@ -2,22 +2,21 @@ import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { CustomCursor } from '@/components/ui/Primitives'
 import { Hero } from '@/components/sections/Hero'
+import { Quote } from '@/components/sections/Quote'
 import { About } from '@/components/sections/About'
-import { Skills } from '@/components/sections/Skills'
+import { Engineering } from '@/components/sections/Engineering'
+import { Stack } from '@/components/sections/Stack'
 import { Projects } from '@/components/sections/Projects'
-import { Experience } from '@/components/sections/Experience'
-import { WhatIBuild } from '@/components/sections/WhatIBuild'
-import { Process } from '@/components/sections/Process'
-import { Statistics } from '@/components/sections/Statistics'
-import { Testimonials } from '@/components/sections/Testimonials'
-import { GitHubSection } from '@/components/sections/GitHubSection'
-import { Blog } from '@/components/sections/Blog'
+import { BehindInterface } from '@/components/sections/BehindInterface'
+import { Journey } from '@/components/sections/Journey'
+import { PersonalProject } from '@/components/sections/PersonalProject'
+import { Services } from '@/components/sections/Services'
 import { Contact } from '@/components/sections/Contact'
-import { useLenis, useScrollReveal } from '@/hooks/useAnimations'
+import { useLenis, useReveal } from '@/hooks/useAnimations'
 
 export default function App() {
   useLenis()
-  useScrollReveal()
+  useReveal()
 
   return (
     <>
@@ -25,16 +24,15 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
+        <Quote />
+        <Journey />
         <About />
-        <Skills />
+        <Engineering />
+        <Stack />
         <Projects />
-        <Experience />
-        <WhatIBuild />
-        <Process />
-        <Statistics />
-        <Testimonials />
-        <GitHubSection />
-        <Blog />
+        <BehindInterface />
+        <PersonalProject />
+        <Services />
         <Contact />
       </main>
       <Footer />
