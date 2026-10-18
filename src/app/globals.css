@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Midnight Electric Design Tokens ─────────────────────────────────────── */
+:root {
+  --color-bg: #0B1120;
+  --color-bg2: #111827;
+  --color-surface: #111827;
+  --color-surface2: #1E293B;
+  --color-card: #1E293B;
+  --color-text: #F8FAFC;
+  --color-muted: #94A3B8;
+  --color-accent: #3B82F6;
+  --color-accent2: #22D3EE;
+  --color-highlight: #22D3EE;
+  --color-border: #334155;
+  --color-success: #34D399;
+  --color-error: #F87171;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-muted);
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: var(--color-accent);
+    color: white;
+  }
+}
+
+@layer components {
+  .section {
+    @apply py-20 sm:py-24 lg:py-32;
+  }
+
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-label {
+    @apply text-xs font-semibold uppercase tracking-widest text-[#3B82F6];
+  }
+
+  .section-title {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F8FAFC] leading-tight;
+    font-family: var(--font-display);
+  }
+
+  .section-subtitle {
+    @apply text-lg text-[#94A3B8] leading-relaxed max-w-2xl;
+  }
+
+  /* Card: uses Midnight Electric card background */
+  .card {
+    @apply bg-[#1E293B]/85 backdrop-blur-sm border border-[#334155] rounded-xl p-6 transition-all duration-200 hover:border-[#3B82F6]/50 hover:bg-[#1E293B] hover:shadow-lg hover:shadow-[#3B82F6]/5;
+  }
+
+  .tag {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-[#1E293B] text-[#94A3B8] border border-[#334155];
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#3B82F6] hover:bg-[#2563EB] text-white font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1120];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[#334155] text-[#94A3B8] hover:text-[#F8FAFC] hover:border-[#3B82F6]/50 hover:bg-[#111827] font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1120];
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-[#3B82F6] via-[#22D3EE] to-[#34D399] bg-clip-text text-transparent;
+  }
+
+  /* Grid background */
+  .grid-bg {
+    background-image: 
+      linear-gradient(rgba(59, 130, 246, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.07) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  /* Dot matrix background */
+  .dot-bg {
+    background-image: radial-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Glass panel */
+  .glass-panel {
+    @apply bg-[#111827]/60 backdrop-blur-md border border-[#334155]/70 rounded-2xl;
+  }
+
+  /* Glow effect */
+  .glow-accent {
+    box-shadow: 0 0 60px rgba(59, 130, 246, 0.18);
+  }
+}
+
+/* Animated gradient border */
+@keyframes gradient-border {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.gradient-border {
+  background: linear-gradient(135deg, #3B82F6, #22D3EE, #34D399, #3B82F6);
+  background-size: 200% 200%;
+  animation: gradient-border 4s ease infinite;
+}
+
+/* Code font for monospace elements */
+code, .font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Smooth appearing text */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Stagger delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
