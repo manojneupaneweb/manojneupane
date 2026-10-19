@@ -816,23 +816,6 @@ function PhilosophySection() {
             <span className="gradient-text">solving real-world problems.</span>&rdquo;
           </h2>
         </blockquote>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-8 text-left">
-          {[
-            { icon: "🔒", title: "Security boundaries", desc: "Proper authentication, authorization, and input validation at every layer." },
-            { icon: "🏗️", title: "Meaningful architecture", desc: "Structure that communicates intent and supports future maintainers." },
-            { icon: "📖", title: "Clear naming", desc: "Code that reads like documentation — variables, functions, and routes named for humans." },
-            { icon: "⚡", title: "Reliable performance", desc: "Applications that perform under real load, not just in development." },
-            { icon: "🔄", title: "Maintainability", desc: "Code written to be changed — not to be preserved exactly as-is forever." },
-            { icon: "👤", title: "User workflows", desc: "Interfaces designed around how people actually work, not theoretical use cases." },
-          ].map((item) => (
-            <div key={item.title} className="space-y-2">
-              <div className="text-2xl" aria-hidden="true">{item.icon}</div>
-              <h3 className="text-sm font-semibold text-[#F8FAFC]">{item.title}</h3>
-              <p className="text-xs text-[#94A3B8] leading-relaxed">{item.desc}</p>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );
