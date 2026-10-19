@@ -402,118 +402,6 @@ function ExperienceSection() {
 }
 
 
-// ─── Section 4: Selected Work ─────────────────────────────────
-function SelectedWorkSection() {
-  return (
-    <section className="section bg-transparent" aria-labelledby="work-heading">
-      <div className="container">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
-          <div className="space-y-3">
-            <span className="section-label">Selected Work</span>
-            <h2 id="work-heading" className="section-title">
-              What I&apos;ve Built
-            </h2>
-          </div>
-          <Link href="/projects" className="btn-secondary text-sm shrink-0">
-            All Projects
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {featuredProjects.map((project) => (
-            <article
-              key={project.slug}
-              className="group card hover:shadow-lg hover:shadow-[#3B82F6]/5 hover:-translate-y-1 transition-all duration-300"
-            >
-              {/* Header */}
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="tag">{project.category}</span>
-                    {project.status === "live" && (
-                      <span className="inline-flex items-center gap-1 text-xs text-[#22D3EE] font-mono">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#22D3EE] animate-pulse" aria-hidden="true" />
-                        Live
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="text-xl font-bold text-[#F8FAFC] group-hover:text-[#3B82F6] transition-colors">
-                    {project.title}
-                  </h3>
-                </div>
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Visit ${project.title} live site`}
-                    className="shrink-0 p-2 rounded-lg border border-[#334155] text-[#94A3B8] hover:text-[#F8FAFC] hover:border-[#3B82F6]/50 transition-all"
-                  >
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </a>
-                )}
-              </div>
-
-              <p className="text-[#94A3B8] leading-relaxed text-sm mb-4">
-                {project.description}
-              </p>
-
-              {/* Stack tags */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.stack.slice(0, 5).map((tech) => (
-                  <span key={tech} className="tag">{tech}</span>
-                ))}
-              </div>
-
-              {/* Footer */}
-              <div className="flex items-center justify-between">
-                <p className="text-xs text-[#94A3B8]">
-                  <span className="font-medium text-[#3B82F6]">My role: </span>
-                  {project.contribution.split(" ").slice(0, 8).join(" ")}…
-                </p>
-                <Link
-                  href={`/projects/${project.slug}`}
-                  className="text-sm text-[#3B82F6] hover:text-[#2563EB] font-medium flex items-center gap-1 group/link"
-                >
-                  Case Study
-                  <svg className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </Link>
-              </div>
-            </article>
-          ))}
-
-          {/* All projects CTA card */}
-          <Link
-            href="/projects"
-            className="card border-dashed hover:border-[#3B82F6]/40 flex flex-col items-center justify-center text-center gap-4 min-h-[200px] group"
-          >
-            <div className="w-12 h-12 rounded-full bg-[#1E293B] flex items-center justify-center group-hover:bg-[#3B82F6]/10 transition-colors">
-              <svg className="w-5 h-5 text-[#3B82F6]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-              </svg>
-            </div>
-            <div>
-              <p className="font-semibold text-[#F8FAFC] group-hover:text-[#3B82F6] transition-colors">
-                View All Projects
-              </p>
-              <p className="text-sm text-[#94A3B8] mt-1">
-                SaaS, Business Systems, APIs, and more
-              </p>
-            </div>
-          </Link>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ─── Section 4: What I Build ──────────────────────────────────
 function WhatIBuildSection() {
   return (
@@ -1325,7 +1213,6 @@ export default function HomePage() {
       <PhilosophySection />
       <IntroSection />
       <ExperienceSection />
-      <SelectedWorkSection />
       <WhatIBuildSection />
       <FeaturedProductSection />
       <TechnicalCapabilitiesSection />
