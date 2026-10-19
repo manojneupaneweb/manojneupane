@@ -1351,13 +1351,13 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <PhilosophySection />
       <IntroSection />
       <ExperienceSection />
       <SelectedWorkSection />
       <WhatIBuildSection />
       <FeaturedProductSection />
       <TechnicalCapabilitiesSection />
-      <PhilosophySection />
       <ArchitectureSection />
       <TeachingSection />
       <TechStackSection />
