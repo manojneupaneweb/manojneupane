@@ -5,9 +5,9 @@
 
 export const siteConfig = {
   name: "Manoj Neupane",
-  title: "Full Stack Web Developer & Software Engineer",
+  title: "Full Stack Web Developer · Node.js · Laravel · Next.js",
   description:
-    "Manoj Neupane is a Full Stack Web Developer from Nepal building SaaS platforms, multi-tenant apps, REST APIs, and business systems with Laravel, React, Next.js, and Node.js.",
+    "Manoj Neupane is a Full Stack Web Developer from Nepal specializing in Node.js, Laravel, and Next.js. Building high-performance SaaS platforms, REST APIs, and scalable web applications.",
   url: "https://manoj-neupane.com.np",
   email: "manojneupaneweb@gmail.com",
   github: "https://github.com/manojneupaneweb",
@@ -16,7 +16,7 @@ export const siteConfig = {
   profileImage: "/images/manoj-neupane.png",
   tagline: "I build software that solves real problems.",
   subTagline:
-    "I build web applications, SaaS platforms, and business systems designed around real workflows, maintainable architecture, and reliable production use.",
+    "Specialized in Node.js, Laravel, and Next.js — building web applications, SaaS platforms, and business systems designed around real workflows, maintainable architecture, and reliable production use.",
 };
 
 // ─── Projects ────────────────────────────────────────────────

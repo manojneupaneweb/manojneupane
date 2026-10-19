@@ -142,7 +142,7 @@ function HeroSection() {
                     name: <span className="text-[#22D3EE]">&quot;Manoj Neupane&quot;</span>,
                   </div>
                   <div className="pl-3 xl:pl-4 text-[#94A3B8]">
-                    stack: <span className="text-[#22D3EE]">[&quot;Laravel&quot;, &quot;Next.js&quot;]</span>,
+                    coreStack: <span className="text-[#22D3EE]">[&quot;Node.js&quot;, &quot;Laravel&quot;, &quot;Next.js&quot;]</span>,
                   </div>
                   <div className="pl-3 xl:pl-4 text-[#94A3B8]">
                     focus: <span className="text-[#22D3EE]">&quot;real problems&quot;</span>,
@@ -159,10 +159,10 @@ function HeroSection() {
 
               {/* Floating tags */}
               {[
+                { label: "Node.js", pos: "top-1 left-1", color: "text-[#34D399]" },
                 { label: "Laravel", pos: "top-1 right-1", color: "text-[#F05340]" },
                 { label: "Next.js", pos: "bottom-1 right-1", color: "text-[#F8FAFC]" },
-                { label: "MySQL", pos: "top-1/2 -left-5 -translate-y-1/2", color: "text-[#22D3EE]" },
-                { label: "REST API", pos: "top-1 left-1", color: "text-[#22D3EE]" },
+                { label: "REST APIs", pos: "top-1/2 -left-5 -translate-y-1/2", color: "text-[#22D3EE]" },
               ].map((tag) => (
                 <div
                   key={tag.label}
