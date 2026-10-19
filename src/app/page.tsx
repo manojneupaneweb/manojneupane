@@ -227,37 +227,24 @@ function IntroSection() {
           {/* Right Column: Introduction Copy & Capabilities */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             <div>
-              <span className="section-label">About My Work</span>
+              <span className="section-label">About Manoj</span>
               <h2 id="intro-heading" className="section-title mt-2">
-                More Than Just a Website.
+                Engineering Practical Software That Lasts.
               </h2>
             </div>
 
-            <p className="section-subtitle lg:mx-0">
-              Software development for me means the full cycle — understanding
-              requirements, designing database schemas, building REST APIs,
-              implementing authentication and authorization, creating frontend
-              interfaces, and deploying to production. The website is the last
-              step, not the only one.
-            </p>
-
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 text-center">
-              {[
-                { icon: "🔧", label: "Backend Architecture" },
-                { icon: "🗄️", label: "Database Design" },
-                { icon: "🔐", label: "Auth & RBAC" },
-                { icon: "🚀", label: "Production Deployment" },
-              ].map((item) => (
-                <div key={item.label} className="p-3 rounded-xl bg-[#111827]/60 border border-[#334155] space-y-1.5">
-                  <div className="text-2xl" aria-hidden="true">{item.icon}</div>
-                  <div className="text-xs text-[#94A3B8] font-medium">{item.label}</div>
-                </div>
-              ))}
+            <div className="space-y-4 text-[#94A3B8] text-base leading-relaxed lg:max-w-2xl">
+              <p>
+                I&apos;m a Full Stack Web Developer and Software Engineer based in Nepal, specializing in <span className="text-[#F8FAFC] font-medium">Node.js</span>, <span className="text-[#F8FAFC] font-medium">Laravel</span>, and <span className="text-[#F8FAFC] font-medium">Next.js</span>. I build web applications, SaaS platforms, and custom business systems designed around real workflows, clean database architecture, and reliable production use.
+              </p>
+              <p>
+                For me, software engineering is much more than stitching together templates — it is the entire lifecycle: breaking down complex requirements, modeling efficient schemas, implementing airtight authentication, crafting responsive interfaces, and maintaining high-uptime deployments.
+              </p>
             </div>
 
             <div className="pt-2 flex justify-center lg:justify-start">
               <Link href="/about" className="btn-secondary">
-                Learn More About Me
+                Learn More About My Story
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
