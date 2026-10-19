@@ -1,24 +1,9 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Syne } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { siteConfig } from "@/lib/data";
 import { Analytics } from "@vercel/analytics/react";
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
-const syne = Syne({
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-  weight: ["600", "700", "800"],
-});
 
 // ─── Root Layout Metadata ────────────────────────────────────────────────────
 // Provides the global title template only. Every child page MUST export its own
@@ -145,10 +130,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${jakarta.variable} ${syne.variable}`}
-    >
+    <html lang="en">
       <head>
         {/* Favicon */}
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
