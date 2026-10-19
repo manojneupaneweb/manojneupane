@@ -790,7 +790,7 @@ function TechnicalCapabilitiesSection() {
 function PhilosophySection() {
   return (
     <section
-      className="section bg-[#111827]/50 backdrop-blur-sm border-y border-[#334155]/60 relative overflow-hidden"
+      className="py-12 sm:py-16 bg-[#111827]/50 backdrop-blur-sm border-y border-[#334155]/60 relative overflow-hidden"
       aria-labelledby="philosophy-heading"
     >
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -803,7 +803,7 @@ function PhilosophySection() {
         />
       </div>
 
-      <div className="container relative max-w-4xl mx-auto text-center space-y-8">
+      <div className="container relative max-w-4xl mx-auto text-center space-y-4">
         <span className="section-label">My Approach</span>
         <blockquote>
           <h2
