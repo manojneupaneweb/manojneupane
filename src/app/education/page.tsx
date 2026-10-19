@@ -243,10 +243,10 @@ export default function EducationPage() {
                 View my projects →
               </Link>
               <Link
-                href="/experience"
+                href="/about"
                 className="text-sm text-[#3B82F6] font-medium hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] rounded"
               >
-                View my experience →
+                About my background →
               </Link>
             </div>
           </div>
