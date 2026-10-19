@@ -279,14 +279,14 @@ function ExperienceSection() {
           <div className="space-y-3">
             <span className="section-label">Experience & Teaching</span>
             <h2 id="experience-heading" className="section-title">
-              Professional Experience & Programming Instruction
+              Professional Experience
             </h2>
             <p className="section-subtitle">
-              Building production-grade web applications and APIs while actively teaching and mentoring developers in modern programming frameworks.
+              Building production-grade web applications and APIs, combined with mentoring developers in modern frameworks.
             </p>
           </div>
           <Link href="/experience" className="btn-secondary text-sm shrink-0">
-            Full Experience Timeline
+            View Full Timeline
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -297,12 +297,12 @@ function ExperienceSection() {
           {experiences.map((exp) => (
             <div key={exp.id} className="card relative overflow-hidden">
               {/* Header */}
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-6 border-b border-[#334155]">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-5 border-b border-[#334155]">
                 <div>
-                  <div className="flex items-center gap-3 flex-wrap mb-1.5">
+                  <div className="flex items-center gap-3 flex-wrap mb-1">
                     <h3 className="text-xl sm:text-2xl font-bold text-[#F8FAFC]">{exp.role}</h3>
-                    <span className="px-3 py-0.5 rounded-full text-xs font-mono font-medium bg-[#22D3EE]/10 text-[#22D3EE] border border-[#22D3EE]/30">
-                      Development + Instruction
+                    <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-[#22D3EE]/10 text-[#22D3EE] border border-[#22D3EE]/30">
+                      Engineering + Mentorship
                     </span>
                   </div>
                   <div className="flex items-center gap-2 flex-wrap text-sm">
@@ -311,12 +311,12 @@ function ExperienceSection() {
                         href={exp.organizationUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[#3B82F6] hover:text-[#2563EB] font-semibold text-base transition-colors"
+                        className="text-[#3B82F6] hover:text-[#2563EB] font-semibold transition-colors"
                       >
                         {exp.organization}
                       </a>
                     ) : (
-                      <span className="text-[#3B82F6] font-semibold text-base">{exp.organization}</span>
+                      <span className="text-[#3B82F6] font-semibold">{exp.organization}</span>
                     )}
                     <span className="text-[#94A3B8]">·</span>
                     <span className="text-[#94A3B8]">{exp.type}</span>
@@ -329,57 +329,57 @@ function ExperienceSection() {
                 </div>
               </div>
 
-              {/* Dual Pillars: Software Engineering & Programming Instruction */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
-                {/* Pillar 1: Production Software Engineering */}
-                <div className="bg-[#1E293B]/60 rounded-xl p-5 border border-[#334155]/80 space-y-3">
-                  <div className="flex items-center gap-2 text-[#22D3EE] font-semibold text-sm uppercase tracking-wider">
-                    <span className="text-base">💻</span>
-                    Software Engineering & Architecture
+              {/* Dual Pillars: Software Engineering & Instruction */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 my-5">
+                {/* Pillar 1: Software Engineering */}
+                <div className="bg-[#1E293B]/40 rounded-xl p-4 sm:p-5 border border-[#334155]/60 space-y-2.5">
+                  <div className="flex items-center gap-2 text-[#22D3EE] font-semibold text-xs uppercase tracking-wider">
+                    <span>💻</span>
+                    Software Engineering
                   </div>
-                  <ul className="space-y-2.5 text-sm text-[#94A3B8]">
-                    <li className="flex items-start gap-2.5">
+                  <ul className="space-y-2 text-sm text-[#94A3B8]">
+                    <li className="flex items-start gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#22D3EE] mt-2 shrink-0" aria-hidden="true" />
-                      <span>Developing SaaS platforms, business systems, and RESTful APIs for production environments.</span>
+                      <span>Developing SaaS platforms, business systems, and RESTful APIs for production use.</span>
                     </li>
-                    <li className="flex items-start gap-2.5">
+                    <li className="flex items-start gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#22D3EE] mt-2 shrink-0" aria-hidden="true" />
-                      <span>Designing MySQL schemas, database optimizations, JWT authentication, and Role-Based Access Control (RBAC).</span>
+                      <span>Designing MySQL schemas, JWT authentication, and Role-Based Access Control (RBAC).</span>
                     </li>
-                    <li className="flex items-start gap-2.5">
+                    <li className="flex items-start gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#22D3EE] mt-2 shrink-0" aria-hidden="true" />
-                      <span>Deploying applications with cPanel, Cloudflare, and cloud platforms for reliable uptime.</span>
+                      <span>Configuring deployments via cPanel, Cloudflare, and cloud hosting for high availability.</span>
                     </li>
                   </ul>
                 </div>
 
-                {/* Pillar 2: Teaching Programming */}
-                <div className="bg-[#1E293B]/60 rounded-xl p-5 border border-[#3B82F6]/40 relative space-y-3 shadow-lg shadow-[#3B82F6]/5">
-                  <div className="flex items-center gap-2 text-[#3B82F6] font-semibold text-sm uppercase tracking-wider">
-                    <span className="text-base">🎓</span>
-                    Teaching Programming & Mentorship
+                {/* Pillar 2: Instruction */}
+                <div className="bg-[#1E293B]/40 rounded-xl p-4 sm:p-5 border border-[#334155]/60 space-y-2.5">
+                  <div className="flex items-center gap-2 text-[#3B82F6] font-semibold text-xs uppercase tracking-wider">
+                    <span>🎓</span>
+                    Programming Instruction
                   </div>
-                  <ul className="space-y-2.5 text-sm text-[#94A3B8]">
-                    <li className="flex items-start gap-2.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#22D3EE] mt-2 shrink-0" aria-hidden="true" />
-                      <span><strong className="text-[#F8FAFC] font-medium">Programming Instruction:</strong> Teaching students programming fundamentals, problem-solving techniques, and modern development standards.</span>
+                  <ul className="space-y-2 text-sm text-[#94A3B8]">
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] mt-2 shrink-0" aria-hidden="true" />
+                      <span>Teaching core programming fundamentals, problem-solving, and clean coding standards.</span>
                     </li>
-                    <li className="flex items-start gap-2.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#22D3EE] mt-2 shrink-0" aria-hidden="true" />
-                      <span><strong className="text-[#F8FAFC] font-medium">Laravel & Node.js Curriculum:</strong> Guiding learners through MVC architecture, backend API design, and database relationships.</span>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] mt-2 shrink-0" aria-hidden="true" />
+                      <span>Guiding students through Laravel & Node.js, MVC architecture, and backend API design.</span>
                     </li>
-                    <li className="flex items-start gap-2.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#22D3EE] mt-2 shrink-0" aria-hidden="true" />
-                      <span><strong className="text-[#F8FAFC] font-medium">Mentoring & Code Reviews:</strong> Helping developers debug complex bugs, understand error messages, and build portfolio-ready projects.</span>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] mt-2 shrink-0" aria-hidden="true" />
+                      <span>Conducting code reviews and hands-on debugging sessions for production projects.</span>
                     </li>
                   </ul>
                 </div>
               </div>
 
               {/* Technologies Applied */}
-              <div className="pt-4 border-t border-[#334155] flex flex-wrap items-center justify-between gap-4">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-xs font-mono text-[#94A3B8] mr-2">Technologies:</span>
+              <div className="pt-4 border-t border-[#334155] flex flex-wrap items-center justify-between gap-3">
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <span className="text-xs font-mono text-[#94A3B8] mr-1">Stack:</span>
                   {exp.technologies.map((tech) => (
                     <span key={tech} className="tag text-xs">{tech}</span>
                   ))}
@@ -387,7 +387,7 @@ function ExperienceSection() {
                 {exp.projects && exp.projects.length > 0 && (
                   <Link
                     href={`/projects/${exp.projects[0]}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-medium text-[#22D3EE] hover:underline"
+                    className="inline-flex items-center gap-1 text-xs font-medium text-[#22D3EE] hover:underline"
                   >
                     Featured project: LinkToGovernment →
                   </Link>
