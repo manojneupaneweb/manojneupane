@@ -5,7 +5,6 @@ import {
   siteConfig,
   featuredProjects,
   whatIBuild,
-  developmentProcess,
   skillCategories,
   services,
   experiences,
@@ -839,62 +838,6 @@ function PhilosophySection() {
   );
 }
 
-// ─── Section 8: How I Work ────────────────────────────────────
-function ProcessSection() {
-  return (
-    <section className="section bg-transparent" aria-labelledby="process-heading">
-      <div className="container">
-        <div className="max-w-2xl mb-12 space-y-3">
-          <span className="section-label">How I Work</span>
-          <h2 id="process-heading" className="section-title">
-            From Problem to Production
-          </h2>
-          <p className="section-subtitle">
-            A structured approach to software development — applied proportionally
-            to each project&apos;s complexity.
-          </p>
-        </div>
-
-        <div className="relative">
-          {/* Timeline line */}
-          <div
-            className="absolute left-4 sm:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[#3B82F6] via-[#22D3EE] to-[#22D3EE] opacity-30 hidden sm:block"
-            aria-hidden="true"
-          />
-
-          <div className="space-y-8">
-            {developmentProcess.map((step, index) => (
-              <div key={step.step} className="relative flex gap-6 sm:gap-12">
-                {/* Step number */}
-                <div className="shrink-0 relative z-10">
-                  <div className="w-8 h-8 sm:w-16 sm:h-16 rounded-full bg-[#111827] border-2 border-[#334155] flex items-center justify-center group-hover:border-[#3B82F6] transition-colors">
-                    <span className="hidden sm:block text-2xl" aria-hidden="true">{step.icon}</span>
-                    <span className="sm:hidden text-xs font-mono text-[#3B82F6] font-bold">{step.step}</span>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="pb-8 flex-1">
-                  <div className="card">
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="text-xs font-mono text-[#3B82F6] uppercase tracking-widest">
-                        Step {step.step}
-                      </span>
-                      <span className="text-xl" aria-hidden="true">{step.icon}</span>
-                    </div>
-                    <h3 className="text-lg font-bold text-[#F8FAFC] mb-2">{step.title}</h3>
-                    <p className="text-sm text-[#94A3B8] leading-relaxed">{step.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ─── Section 9: Software Architecture ────────────────────────
 function ArchitectureSection() {
   const concepts = [
@@ -1415,7 +1358,6 @@ export default function HomePage() {
       <FeaturedProductSection />
       <TechnicalCapabilitiesSection />
       <PhilosophySection />
-      <ProcessSection />
       <ArchitectureSection />
       <TeachingSection />
       <TechStackSection />
