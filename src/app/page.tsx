@@ -804,7 +804,7 @@ function PhilosophySection() {
       </div>
 
       <div className="container relative max-w-4xl mx-auto text-center space-y-8">
-        <span className="section-label">Development Philosophy</span>
+        <span className="section-label">My Approach</span>
         <blockquote>
           <h2
             id="philosophy-heading"
