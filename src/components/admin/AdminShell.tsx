@@ -23,13 +23,10 @@ export default function AdminShell({ children }: AdminShellProps) {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
 
-  // If on login page, render plain content
-  if (pathname === "/admin/login") {
-    return <>{children}</>;
-  }
-
   // System real-time clock
   useEffect(() => {
+    if (pathname === "/admin/login") return;
+
     const updateTime = () => {
       const now = new Date();
       setCurrentTime(
@@ -44,10 +41,12 @@ export default function AdminShell({ children }: AdminShellProps) {
     updateTime();
     const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [pathname]);
 
   // Fetch last login & settings
   useEffect(() => {
+    if (pathname === "/admin/login") return;
+
     fetch("/api/admin/settings")
       .then((res) => res.json())
       .then((data) => {
@@ -68,7 +67,12 @@ export default function AdminShell({ children }: AdminShellProps) {
       .catch(() => {
         setLastLogin("Today, Active");
       });
-  }, []);
+  }, [pathname]);
+
+  // If on login page, render plain content without shell
+  if (pathname === "/admin/login") {
+    return <>{children}</>;
+  }
 
   // Fullscreen toggle handler
   const toggleFullscreen = () => {

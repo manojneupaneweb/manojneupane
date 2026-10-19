@@ -51,23 +51,11 @@ export function getAdminSecret(): string {
   );
 }
 
-// Verify entered password against configured environment variable or saved admin settings
+// Verify entered password against configured environment variable
 export function verifyAdminPassword(password: string): boolean {
   if (!password || typeof password !== "string") return false;
 
-  let configuredPassword = process.env.ADMIN_PASSWORD || "admin1234";
-
-  // Check custom password from admin settings if running in Node environment
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { getAdminSettings } = require("./admin-settings");
-    const settings = getAdminSettings();
-    if (settings && settings.customPasswordHash) {
-      configuredPassword = settings.customPasswordHash;
-    }
-  } catch {
-    // Ignore in edge runtime
-  }
+  const configuredPassword = process.env.ADMIN_PASSWORD || "admin1234";
 
   // Constant-time string comparison to defend against timing attacks
   if (password.length !== configuredPassword.length) {
