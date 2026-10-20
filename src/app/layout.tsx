@@ -100,6 +100,8 @@ const sitewideJsonLd = {
       sameAs: [
         siteConfig.github,
         siteConfig.linkedin,
+        siteConfig.facebook,
+        siteConfig.instagram,
         siteConfig.url,
       ],
       knowsAbout: [

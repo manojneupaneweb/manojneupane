@@ -12,8 +12,10 @@ export const siteConfig = {
   email: "manojneupaneweb@gmail.com",
   github: "https://github.com/manojneupaneweb",
   linkedin: "https://www.linkedin.com/in/manoj-neupane-52162921a",
+  facebook: "https://www.facebook.com/maa.noj.neupane.2025",
+  instagram: "https://www.instagram.com/manojneupaneweb/",
   country: "Nepal",
-  profileImage: "/images/manoj-neupane.png",
+  profileImage: "/images/manoj-neupane.jpg",
   tagline: "I build software that solves real problems.",
   subTagline:
     "Specialized in Node.js, Laravel, and Next.js — building web applications, SaaS platforms, and business systems designed around real workflows, maintainable architecture, and reliable production use.",

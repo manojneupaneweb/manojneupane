@@ -94,7 +94,7 @@
   }
 
   .container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-[1200px] mx-auto px-4 sm:px-5 lg:px-6;
   }
 
   .section-label {
@@ -172,6 +172,18 @@
 /* Code font for monospace elements */
 code, .font-mono {
   font-family: var(--font-mono);
+}
+
+/* Scroll reveal — used by RevealWrapper as a CSS fallback */
+@keyframes reveal-from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Smooth appearing text */
