@@ -9,13 +9,9 @@ import { siteConfig } from "@/lib/data";
 
 const PROJECT_TYPES = [
   "Select a project type",
-  "Custom Web Application",
-  "Laravel Development",
-  "Next.js / React Frontend",
-  "SaaS Platform",
-  "API Development",
-  "Database Design",
-  "Admin Panel / CMS",
+  "Custom Web Apps",
+  "Laravel & API Development",
+  "Payment Gateway Integration",
   "Deployment & Maintenance",
   "Other",
 ] as const;
@@ -101,6 +97,16 @@ function ContactForm() {
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
   const [errorMessage, setErrorMessage] = useState<string>("");
 
+  useEffect(() => {
+    const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+    if (!siteKey || document.querySelector("script[data-turnstile]")) return;
+    const script = document.createElement("script");
+    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+    script.async = true;
+    script.dataset.turnstile = "1";
+    document.body.appendChild(script);
+  }, []);
+
   // Pre-fill project type from URL query param (?service=...)
   useEffect(() => {
     const service = searchParams.get("service");
@@ -175,6 +181,7 @@ function ContactForm() {
           budget: form.budget !== "Not specified" ? form.budget : undefined,
           timeline: form.timeline !== "Not specified" ? form.timeline : undefined,
           company: form.company,
+          turnstileToken: (document.querySelector("[name=cf-turnstile-response]") as HTMLInputElement | null)?.value,
         }),
       });
 
@@ -217,7 +224,7 @@ function ContactForm() {
         </h2>
         <p className="text-[#94A3B8] mb-6 leading-relaxed">
           Thank you for reaching out. I&apos;ve received your message and will
-          reply within one business day.
+          reply within 24 hours.
         </p>
         <button
           onClick={() => setSubmitStatus("idle")}
@@ -431,8 +438,14 @@ function ContactForm() {
         )}
       </button>
 
+      {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && (
+        <div
+          className="cf-turnstile"
+          data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+        />
+      )}
       <p className="text-xs text-[#4e5563]">
-        <span className="text-red-400">*</span> Required fields
+        <span className="text-red-400">*</span> Required fields. I reply within 24 hours.
       </p>
       </div>
     </form>
@@ -458,12 +471,12 @@ export default function ContactClient() {
         <div className="container relative">
           <span className="section-label">Contact</span>
           <h1 id="contact-heading" className="section-title mt-4 mb-5">
-            Start a project
+            Start a Project
           </h1>
           <p className="section-subtitle">
             If you have a project inquiry, want to collaborate, or just want to ask
             something, fill out the form below. I read every message and respond to
-            genuine inquiries within one business day. Discovery, a written quote, then the build.
+            genuine inquiries within 24 hours. Discovery, a written quote, then the build.
           </p>
         </div>
       </section>

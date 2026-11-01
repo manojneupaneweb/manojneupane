@@ -69,6 +69,26 @@ const nextConfig = {
         destination: "/",
         permanent: true,
       },
+      {
+        source: "/projects/saas-multi-tenant",
+        destination: "/notes/saas-multi-tenant",
+        permanent: true,
+      },
+      {
+        source: "/projects/business-management-system",
+        destination: "/notes/business-management-system",
+        permanent: true,
+      },
+      {
+        source: "/projects/educational-portal",
+        destination: "/notes/educational-portal",
+        permanent: true,
+      },
+      {
+        source: "/projects/rest-api-development",
+        destination: "/notes/rest-api-development",
+        permanent: true,
+      },
     ];
   },
 };

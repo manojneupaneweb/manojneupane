@@ -85,6 +85,23 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: "Message received." });
   }
 
+  const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
+  if (turnstileSecret) {
+    const token = typeof body.turnstileToken === "string" ? body.turnstileToken : "";
+    if (!token) {
+      return NextResponse.json({ message: "Complete the spam check." }, { status: 422 });
+    }
+    const verify = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ secret: turnstileSecret, response: token }),
+    });
+    const outcome = (await verify.json()) as { success?: boolean };
+    if (!outcome.success) {
+      return NextResponse.json({ message: "Spam check failed." }, { status: 422 });
+    }
+  }
+
   if (validationErrors.length > 0) {
     return NextResponse.json(
       {

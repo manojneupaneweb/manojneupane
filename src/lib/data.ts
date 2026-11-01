@@ -394,81 +394,53 @@ export type Service = {
   example?: string;
   icon: string;
   active: boolean;
+  proof?: { href: string; label: string };
 };
 
 export const services: Service[] = [
   {
-    id: "web-application",
-    name: "Custom Web Application Development",
-    problem: "You need a web application built around your specific business logic — not a generic template.",
-    deliverables: ["Full-stack web application", "Database design", "Backend API", "Frontend interface", "Deployment"],
+    id: "web-apps",
+    name: "Custom Web Apps",
+    problem:
+      "A product built around your workflow: the interface, the database, an admin area, and a frontend in Next.js or React when you need one.",
+    deliverables: ["Full-stack application", "Database schema", "Admin screens", "Responsive frontend"],
     technologies: ["Laravel", "Next.js", "React", "MySQL", "Tailwind CSS"],
-    icon: "🌐",
+    icon: "layout",
     active: true,
+    proof: { href: "/projects/linktogovernment", label: "LinkToGovernment" },
   },
   {
-    id: "laravel",
-    name: "Laravel Development",
-    problem: "Your PHP backend needs a robust framework with clean architecture and maintainable code.",
-    deliverables: ["Laravel application", "Eloquent models and migrations", "REST API", "Authentication", "Admin panel"],
-    technologies: ["Laravel", "PHP", "MySQL", "Blade", "Tailwind CSS"],
-    example: "LinkToGovernment",
-    icon: "⚡",
+    id: "laravel-api",
+    name: "Laravel & API Development",
+    problem:
+      "A Laravel backend or a REST API other apps can call, with auth, validation, and a schema you can extend.",
+    deliverables: ["Laravel application", "REST API", "Auth and roles", "Request validation"],
+    technologies: ["Laravel", "PHP", "Node.js", "MySQL", "JWT"],
+    icon: "server",
     active: true,
+    proof: { href: "/projects/gogain", label: "GoGain API and payments" },
   },
   {
-    id: "nextjs-react",
-    name: "Next.js & React Frontend Development",
-    problem: "Your product needs a modern, performant frontend with server-side rendering and a great developer experience.",
-    deliverables: ["Next.js application", "React components", "Static and server-rendered pages", "SEO setup", "Responsive design"],
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"],
-    icon: "⚛️",
+    id: "payments",
+    name: "Payment Gateway Integration",
+    problem:
+      "eSewa or Khalti checkout where the amount is signed on the server and an order is marked paid only after the provider confirms it.",
+    deliverables: ["eSewa or Khalti checkout", "Server-side signature", "Callback verification"],
+    technologies: ["Laravel", "Node.js", "eSewa", "Khalti"],
+    icon: "card",
     active: true,
-  },
-  {
-    id: "saas",
-    name: "SaaS Platform Development",
-    problem: "You want to deliver your software as a service to multiple customers from a single, maintainable codebase.",
-    deliverables: ["Multi-tenant architecture", "Tenant management", "Subscription-ready structure", "Role-based access", "Admin dashboard"],
-    technologies: ["Laravel", "MySQL", "JWT", "RBAC", "Tailwind CSS"],
-    icon: "☁️",
-    active: true,
-  },
-  {
-    id: "api",
-    name: "API Development & Integration",
-    problem: "Your application needs a clean, documented API that mobile apps, third-party tools, or other services can reliably consume.",
-    deliverables: ["REST API design", "Authentication system", "Request validation", "API documentation", "Integration support"],
-    technologies: ["Laravel", "Node.js", "JWT", "Express.js"],
-    icon: "🔌",
-    active: true,
-  },
-  {
-    id: "database",
-    name: "Database Design",
-    problem: "Your application's data model needs to be carefully designed for integrity, performance, and future extensibility.",
-    deliverables: ["Schema design", "Migrations", "Indexing strategy", "Relationship modeling", "Query optimization"],
-    technologies: ["MySQL", "SQLite", "MongoDB", "Eloquent ORM"],
-    icon: "🗄️",
-    active: true,
-  },
-  {
-    id: "admin-panel",
-    name: "Admin Panel & CMS",
-    problem: "Your team needs an internal interface to manage content, users, settings, and data without writing SQL.",
-    deliverables: ["Admin dashboard", "CRUD interfaces", "User management", "Role permissions", "Export tools"],
-    technologies: ["Laravel", "Tailwind CSS", "React", "MySQL"],
-    icon: "🎛️",
-    active: true,
+    proof: { href: "/blog/how-to-integrate-esewa-payment-gateway", label: "eSewa tutorial" },
   },
   {
     id: "deployment",
     name: "Deployment & Maintenance",
-    problem: "Your application is built but needs proper production hosting, DNS, SSL, and ongoing technical maintenance.",
-    deliverables: ["Production deployment", "DNS and SSL configuration", "Cloudflare setup", "Monitoring guidance", "Technical handover"],
-    technologies: ["Vercel", "cPanel", "Cloudflare", "GitHub Actions"],
-    icon: "🚀",
+    problem:
+      "Production hosting, DNS, SSL, and a handover so the app keeps running after the first release.",
+    deliverables: ["Production deploy", "DNS and SSL", "Cloudflare", "Handover notes"],
+    technologies: ["Vercel", "cPanel", "Cloudflare"],
+    icon: "rocket",
     active: true,
+    proof: { href: "/projects/techsphere", label: "TechSphere on Vercel" },
   },
 ];
 

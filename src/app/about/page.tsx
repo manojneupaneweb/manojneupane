@@ -66,7 +66,7 @@ export default function AboutPage() {
               </p>
               <div className="pt-2 flex flex-wrap gap-3 justify-center md:justify-start">
                 <Link href="/contact" className="btn-primary !text-sm !py-2.5 !px-5">
-                  Start a project
+                  Start a Project
                 </Link>
                 <Link href="/projects" className="btn-secondary !text-sm !py-2.5 !px-5">
                   Explore Projects

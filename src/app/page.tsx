@@ -6,6 +6,7 @@ import { buildHomeMetadata } from "@/lib/metadata";
 import RevealWrapper from "@/components/RevealWrapper";
 import SkillsBoard from "@/components/SkillsBoard";
 import StatCounters from "@/components/StatCounters";
+import Testimonials from "@/components/Testimonials";
 
 export const metadata: Metadata = buildHomeMetadata();
 
@@ -77,11 +78,11 @@ function HeroSection() {
           {/* CTAs */}
           <div className="flex flex-wrap items-center gap-4 mb-4">
             <Link href="/contact" className="btn-primary group">
-              Start a project
+              Start a Project
               <Arrow className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </Link>
             <Link href="/projects" className="btn-secondary">
-              Explore My Work
+              View Work
             </Link>
           </div>
           <p className="mb-12 text-sm text-[#b7bec8]">
@@ -642,14 +643,14 @@ function ContactSection() {
 
       <div className="container relative text-center space-y-10">
         <RevealWrapper className="space-y-5">
-          <span className="section-label">Start a project</span>
+          <span className="section-label">Start a Project</span>
           <h2 id="contact-heading" className="section-title">
             Have an Idea?
             <br />
-            <span className="gradient-text">Start a project.</span>
+            <span className="gradient-text">Start a Project.</span>
           </h2>
           <p className="section-subtitle mx-auto text-center">
-            Tell me the problem, the users, and the timeline. I reply within one business day.
+            Tell me the problem, the users, and the timeline. I reply within 24 hours.
             Then we do a short discovery call, a written quote, and the build.
           </p>
         </RevealWrapper>
@@ -685,7 +686,7 @@ function ContactSection() {
 
         <RevealWrapper delay={160}>
           <Link href="/contact" className="btn-primary mx-auto">
-            Start a project <Arrow />
+            Start a Project <Arrow />
           </Link>
         </RevealWrapper>
       </div>
@@ -700,6 +701,7 @@ export default function HomePage() {
       <HeroSection />
       <QuoteSection />
       <StatCounters />
+      <Testimonials />
       <AboutSection />
       <ExperienceSection />
       <ProjectsSection />

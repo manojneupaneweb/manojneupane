@@ -1,20 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { stats } from "@/data/stats";
 
-const stats = [
-  { end: 120, decimals: 0, suffix: "+", label: "Students taught" },
-  { end: 40, decimals: 0, suffix: "+", label: "Projects delivered" },
-  { end: 2.5, decimals: 1, suffix: "+", label: "Years of professional experience" },
-  { end: 2, decimals: 0, suffix: "", label: "Stacks taught, Laravel and MERN" },
-];
-
-function format(value: number, decimals: number, suffix: string) {
-  const shown = decimals > 0 ? value.toFixed(decimals) : String(Math.round(value));
-  return `${shown}${suffix}`;
-}
-
-function useCount(end: number, decimals: number, run: boolean) {
+function useCount(end: number, run: boolean) {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
@@ -36,21 +25,25 @@ function useCount(end: number, decimals: number, run: boolean) {
     return () => cancelAnimationFrame(frame);
   }, [end, run]);
 
-  return format(value, decimals, "");
+  return value;
+}
+
+function show(value: number, decimals: number) {
+  return decimals > 0 ? value.toFixed(decimals) : String(Math.round(value));
 }
 
 function Stat({
-  end,
+  value: end,
   decimals,
   suffix,
   label,
   run,
 }: (typeof stats)[number] & { run: boolean }) {
-  const value = useCount(end, decimals, run);
+  const value = useCount(end, run);
   return (
     <div className="text-center">
       <div className="stat-number">
-        {value}
+        {show(value, decimals)}
         {suffix}
       </div>
       <div className="mt-1 text-sm font-mono text-[#4e5563]">{label}</div>

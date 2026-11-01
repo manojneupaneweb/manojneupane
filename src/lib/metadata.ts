@@ -168,14 +168,5 @@ export function buildHomeMetadata(): Metadata {
 
     authors: [{ name: siteConfig.name, url: siteConfig.url }],
     creator: siteConfig.name,
-
-    // Keywords are deprecated by search engines but harmless; keep minimal
-    keywords: [
-      "Manoj Neupane",
-      "Full Stack Developer Nepal",
-      "Laravel Developer Nepal",
-      "Next.js Developer Nepal",
-      "Software Engineer Nepal",
-    ],
   };
 }

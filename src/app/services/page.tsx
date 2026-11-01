@@ -1,171 +1,129 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { siteConfig, services } from "@/lib/data";
+import { services, siteConfig } from "@/lib/data";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
   title: "Web Development Services",
   description:
-    "Web development services by Manoj Neupane: custom web applications, Laravel backends, Next.js/React frontends, SaaS platforms, REST API development, database design, and production deployment.",
+    "Freelance services from Manoj Neupane: custom web apps, Laravel and API development, eSewa and Khalti payments, and production deployment.",
   path: "/services",
 });
 
+const icons: Record<string, JSX.Element> = {
+  layout: (
+    <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <path d="M3 9h18M9 21V9" />
+    </svg>
+  ),
+  server: (
+    <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+      <rect x="3" y="4" width="18" height="6" rx="1.5" />
+      <rect x="3" y="14" width="18" height="6" rx="1.5" />
+      <path d="M7 7h.01M7 17h.01" />
+    </svg>
+  ),
+  card: (
+    <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+      <rect x="2" y="5" width="20" height="14" rx="2" />
+      <path d="M2 10h20" />
+    </svg>
+  ),
+  rocket: (
+    <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+      <path d="M12 19c0-7 3-11 8-13-2 5-6 8-13 8" />
+      <path d="M9 15l-5 5M7 12l-4 1" />
+    </svg>
+  ),
+};
+
+const process = [
+  { title: "Requirement review", body: "You describe the problem, the users, and what done looks like." },
+  { title: "Scope and timeline", body: "I reply with a scope and a timeline only after that review." },
+  { title: "Build", body: "I implement the agreed scope and show working software as it lands." },
+  { title: "Handover", body: "You get the repo, the deploy, and notes on how to run it." },
+];
+
 export default function ServicesPage() {
-  const activeServices = services.filter((s) => s.active);
+  const activeServices = services.filter((service) => service.active);
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: activeServices.map((service, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Service",
+        name: service.name,
+        description: service.problem,
+        provider: { "@type": "Person", name: siteConfig.name, url: siteConfig.url },
+        areaServed: "NP",
+      },
+    })),
+  };
 
   return (
     <main className="min-h-screen">
-      {/* Header */}
-      <section
-        aria-labelledby="services-heading"
-        className="pt-28 pb-16 sm:pt-36 sm:pb-20 relative overflow-hidden"
-      >
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(34,211,238,0.15)] to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(34,211,238,0.08)] to-transparent" />
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-10"
-            style={{ background: "radial-gradient(circle, rgba(168,85,247,0.4) 0%, transparent 70%)" }} />
-        </div>
-        <div className="container relative">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <section aria-labelledby="services-heading" className="pt-28 pb-10">
+        <div className="container">
           <span className="section-label">Services</span>
-          <h1 id="services-heading" className="section-title mt-4 mb-5">
-            What I Build
-          </h1>
-          <p className="section-subtitle mb-6">
-            I work on specific types of projects where I can deliver real value. Each service
-            below describes the problem it addresses, what I deliver, and the technologies involved.
+          <h1 id="services-heading" className="section-title mt-4 mb-5">What I Build</h1>
+          <p className="section-subtitle mb-8">
+            Four offers. Database design, admin panels, and frontend work sit inside them when the project needs it.
           </p>
-
-          {/* Important note */}
-          <ul className="mb-6 max-w-2xl space-y-2 text-sm text-[#4e5563]">
-            <li>Fixed-price work when the MVP scope is written down.</li>
+          <h2 className="text-sm font-semibold text-[#16181c] mb-3">How a project runs</h2>
+          <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
+            {process.map((step, index) => (
+              <li key={step.title} className="card">
+                <p className="font-mono text-[11px] text-[#0c6b74]">{String(index + 1).padStart(2, "0")}</p>
+                <p className="mt-1 font-semibold text-sm text-[#16181c]">{step.title}</p>
+                <p className="mt-1 text-xs text-[#4e5563]">{step.body}</p>
+              </li>
+            ))}
+          </ol>
+          <h2 className="text-sm font-semibold text-[#16181c] mb-3">Engagement models</h2>
+          <ul className="max-w-2xl space-y-2 text-sm text-[#4e5563]">
+            <li>Fixed-price MVP when the scope is written down.</li>
             <li>Hourly work for a smaller change or a review.</li>
             <li>A monthly retainer for ongoing product work.</li>
+            {/* TODO: replace this line with real rates when you want them public. */}
+            <li>Pricing: not published yet. I quote after the requirement review.</li>
           </ul>
-          <p className="mb-6 max-w-2xl text-sm text-[#4e5563]">
-            I quote after I understand the requirements. I do not publish a rate card.
-          </p>
-
-          <div className="card border border-[rgba(34,211,238,0.12)] max-w-2xl">
-            <div className="flex gap-3">
-              <span className="text-xl flex-shrink-0" aria-hidden="true">ℹ️</span>
-              <div>
-                <p className="text-[#F1F5F9] font-semibold text-sm mb-1">
-                  No guaranteed deadlines before reviewing requirements
-                </p>
-                <p className="text-[#94A3B8] text-sm leading-relaxed">
-                  Timelines depend on scope, complexity, and current workload. I don&apos;t commit
-                  to specific delivery dates until I understand the requirements fully.
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* Services list */}
-      <section aria-labelledby="services-list-heading" className="py-16">
-        <div className="container">
-          <h2 id="services-list-heading" className="sr-only">Available Services</h2>
-          <div className="space-y-6">
-            {activeServices.map((service) => (
-              <article
-                key={service.id}
-                aria-labelledby={`svc-${service.id}-heading`}
-                className="card"
+      <section aria-labelledby="services-list-heading" className="pb-16">
+        <div className="container space-y-6">
+          <h2 id="services-list-heading" className="sr-only">Available services</h2>
+          {activeServices.map((service) => (
+            <article key={service.id} id={service.id} className="card">
+              <div className="flex items-center gap-3 mb-3 text-[#0c6b74]">
+                {icons[service.icon]}
+                <h3 className="text-xl font-bold text-[#16181c]">{service.name}</h3>
+              </div>
+              <p className="text-sm text-[#4e5563] leading-relaxed mb-4">{service.problem}</p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {service.technologies.map((tech) => (
+                  <span key={tech} className="skill-pill text-xs">{tech}</span>
+                ))}
+              </div>
+              {service.proof && (
+                <p className="text-sm mb-4">
+                  <Link href={service.proof.href} className="text-[#0c6b74] underline underline-offset-2">
+                    See {service.proof.label}
+                  </Link>
+                </p>
+              )}
+              <Link
+                href={`/contact?service=${encodeURIComponent(service.name)}`}
+                className="btn-primary text-sm"
               >
-                <div className="flex flex-col md:flex-row md:items-start gap-6">
-                  {/* Left */}
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="text-2xl" aria-hidden="true">{service.icon}</span>
-                      <h3 id={`svc-${service.id}-heading`} className="text-xl font-bold text-[#F1F5F9]">
-                        {service.name}
-                      </h3>
-                    </div>
-                    <p className="text-[#94A3B8] leading-relaxed mb-5">{service.problem}</p>
-
-                    {/* Technologies */}
-                    <div>
-                      <p className="text-xs font-mono font-semibold text-[#94A3B8] uppercase tracking-widest mb-2">Technologies</p>
-                      <div className="flex flex-wrap gap-2">
-                        {service.technologies.map((tech) => (
-                          <span key={tech} className="skill-pill text-xs">{tech}</span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {service.example && (
-                      <p className="text-sm text-[#94A3B8] mt-4">
-                        <span className="text-[#22D3EE] font-medium">Example: </span>
-                        {service.example}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Right: deliverables + CTA */}
-                  <div className="md:w-64 flex-shrink-0">
-                    <div className="rounded-xl p-5 mb-4 border border-[rgba(255,255,255,0.06)]"
-                      style={{ background: "rgba(255,255,255,0.02)" }}>
-                      <p className="text-xs font-mono font-semibold text-[#94A3B8] uppercase tracking-widest mb-3">
-                        Deliverables
-                      </p>
-                      <ul className="space-y-2" role="list">
-                        {service.deliverables.map((d) => (
-                          <li key={d} className="flex gap-2 text-sm text-[#94A3B8]">
-                            <span className="text-[#22D3EE] flex-shrink-0" aria-hidden="true">✓</span>
-                            {d}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <Link
-                      href={`/contact?service=${encodeURIComponent(service.name)}`}
-                      className="btn-primary w-full justify-center text-sm"
-                    >
-                      Inquire about this
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Inquiry summary */}
-      <section
-        aria-labelledby="inquiry-heading"
-        className="border-t border-[rgba(34,211,238,0.08)] py-16"
-        style={{ background: "rgba(255,255,255,0.01)" }}
-      >
-        <div className="container">
-          <h2 id="inquiry-heading" className="text-2xl font-bold mb-4 text-[#F1F5F9] text-center">
-            Project Inquiry
-          </h2>
-          <p className="text-[#94A3B8] text-center mb-10 leading-relaxed">
-            Tell me briefly about your project so I can give you a meaningful response.
-          </p>
-
-          <div className="grid sm:grid-cols-3 gap-5 mb-10">
-            {[
-              { icon: "📋", title: "Describe the Problem", body: "What does your organization need? What workflow or gap is this solving?" },
-              { icon: "⚙️", title: "Share Your Requirements", body: "Key features, integrations, user types, and any technical constraints." },
-              { icon: "📅", title: "Mention Your Timeline", body: "Give a rough idea. I'll say whether that schedule is realistic." },
-            ].map((item) => (
-              <div key={item.title} className="card text-center">
-                <div className="text-2xl mb-3">{item.icon}</div>
-                <h3 className="text-[#F1F5F9] font-semibold text-sm mb-2">{item.title}</h3>
-                <p className="text-[#94A3B8] text-xs leading-relaxed">{item.body}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <Link href="/contact" className="btn-primary mx-auto">
-              Start a project
-            </Link>
-          </div>
+                Start a Project
+              </Link>
+            </article>
+          ))}
         </div>
       </section>
     </main>

@@ -91,7 +91,6 @@ export default function ArticlePage({ params }: ArticlePageProps) {
       name: siteConfig.name,
       url: siteConfig.url,
     },
-    keywords: post.tags.join(", "),
     proficiencyLevel: "Beginner",
   };
 
@@ -168,6 +167,20 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           <p className="text-base sm:text-lg text-[#94A3B8] leading-relaxed max-w-3xl mb-6">
             {post.description}
           </p>
+          {post.category === "Payments" && (
+            <p className="text-sm mb-6">
+              <Link href="/services#payments" className="text-[#0c6b74] underline underline-offset-2">
+                Need this wired into a product? See payment gateway integration.
+              </Link>
+            </p>
+          )}
+          {post.category === "Deployment" && (
+            <p className="text-sm mb-6">
+              <Link href="/services#deployment" className="text-[#0c6b74] underline underline-offset-2">
+                Need this on a server? See deployment and maintenance.
+              </Link>
+            </p>
+          )}
 
           {/* Author Details & Tags */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-[rgba(255,255,255,0.06)]">

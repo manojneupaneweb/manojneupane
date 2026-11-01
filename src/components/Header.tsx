@@ -70,7 +70,7 @@ export default function Header() {
               className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold text-black transition-all duration-300 hover:shadow-[0_0_25px_rgba(34,211,238,0.4)] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080D1A]"
               style={{ background: "linear-gradient(135deg, #22D3EE, #3B82F6)" }}
             >
-              Start a project
+              Start a Project
             </Link>
 
             <button
@@ -124,7 +124,7 @@ export default function Header() {
                 className="flex items-center justify-center px-4 py-3 rounded-xl text-sm font-semibold text-black transition-all"
                 style={{ background: "linear-gradient(135deg, #22D3EE, #3B82F6)" }}
               >
-                Start a project
+                Start a Project
               </Link>
             </div>
           </nav>

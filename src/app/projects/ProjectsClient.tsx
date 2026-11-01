@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { projects } from "@/lib/data";
+import { projects as allProjects } from "@/lib/data";
+
+const projects = allProjects.filter((project) => project.status !== "concept");
 import type { Project } from "@/lib/data";
 
 function StatusBadge({ status }: { status: Project["status"] }) {

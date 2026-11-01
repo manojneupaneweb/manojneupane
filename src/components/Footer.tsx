@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/data";
 import { LocalTimeCard, ScrollToTopButton } from "./FooterWidgets";
 
@@ -9,7 +12,7 @@ const footerLinks = {
     { href: "/skills", label: "Technical Skills" },
     { href: "/services", label: "Freelance & Consulting" },
     { href: "/blog", label: "Engineering Articles" },
-    { href: "/contact", label: "Start a project" },
+    { href: "/contact", label: "Start a Project" },
   ],
   Projects: [
     { href: "/projects/linktogovernment", label: "LinkToGovernment" },
@@ -58,6 +61,8 @@ const socialLinks = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const pathname = usePathname();
+  const showStory = pathname === "/";
 
   return (
     <footer className="on-dark relative border-t border-white/10" style={{ background: "#111318" }}>
@@ -95,7 +100,7 @@ export default function Footer() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-black transition-all hover:shadow-glow-sm hover:-translate-y-0.5"
               style={{ background: "linear-gradient(135deg, #22D3EE, #3B82F6)" }}
             >
-              Start a project
+              Start a Project
             </Link>
           </div>
         </div>
@@ -106,38 +111,40 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12">
           {/* Brand column */}
           <div className="lg:col-span-5 space-y-6">
-            <h3 className="text-sm font-semibold text-[#22D3EE] font-mono uppercase tracking-widest">
-              The Philosophy
-            </h3>
-            <p className="text-sm text-[#94A3B8] leading-relaxed">
-              &ldquo;Software shouldn&apos;t just look good in mockups; it must survive production.
-              I engineer practical, resilient systems with clean relational schemas,
-              secure auth, and maintainable architectures.&rdquo;
-            </p>
-
-            {/* Code snippet */}
-            <div className="p-4 rounded-xl border border-[rgba(34,211,238,0.1)] font-mono text-xs text-[#94A3B8] space-y-1.5"
-              style={{ background: "rgba(255,255,255,0.02)" }}>
-              <div className="flex items-center gap-1.5 pb-2 border-b border-[rgba(255,255,255,0.05)] mb-2">
-                <div className="w-2.5 h-2.5 rounded-full bg-rose-500/70" />
-                <div className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
-                <span className="text-[11px] text-[#94A3B8] ml-2">stack.json</span>
-              </div>
-              <div>
-                <span className="text-[#22D3EE]">const</span>{" "}
-                <span className="text-[#F1F5F9]">focus</span> = [
-                <span className="text-[#34D399]">&quot;Node.js&quot;</span>,{" "}
-                <span className="text-[#34D399]">&quot;Laravel&quot;</span>,{" "}
-                <span className="text-[#34D399]">&quot;Next.js&quot;</span>,{" "}
-                <span className="text-[#34D399]">&quot;MySQL&quot;</span>];
-              </div>
-              <div>
-                <span className="text-[#22D3EE]">const</span>{" "}
-                <span className="text-[#F1F5F9]">role</span> ={" "}
-                <span className="text-[#34D399]">&quot;Engineer &amp; Tutor @ Softworica&quot;</span>;
-              </div>
-            </div>
+            {showStory && (
+              <>
+                <h3 className="text-sm font-semibold text-[#22D3EE] font-mono uppercase tracking-widest">
+                  The Philosophy
+                </h3>
+                <p className="text-sm text-[#94A3B8] leading-relaxed">
+                  &ldquo;Software shouldn&apos;t just look good in mockups; it must survive production.
+                  I engineer practical, resilient systems with clean relational schemas,
+                  secure auth, and maintainable architectures.&rdquo;
+                </p>
+                <div className="p-4 rounded-xl border border-[rgba(34,211,238,0.1)] font-mono text-xs text-[#94A3B8] space-y-1.5"
+                  style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <div className="flex items-center gap-1.5 pb-2 border-b border-[rgba(255,255,255,0.05)] mb-2">
+                    <div className="w-2.5 h-2.5 rounded-full bg-rose-500/70" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
+                    <span className="text-[11px] text-[#94A3B8] ml-2">stack.json</span>
+                  </div>
+                  <div>
+                    <span className="text-[#22D3EE]">const</span>{" "}
+                    <span className="text-[#F1F5F9]">focus</span> = [
+                    <span className="text-[#34D399]">&quot;Node.js&quot;</span>,{" "}
+                    <span className="text-[#34D399]">&quot;Laravel&quot;</span>,{" "}
+                    <span className="text-[#34D399]">&quot;Next.js&quot;</span>,{" "}
+                    <span className="text-[#34D399]">&quot;MySQL&quot;</span>];
+                  </div>
+                  <div>
+                    <span className="text-[#22D3EE]">const</span>{" "}
+                    <span className="text-[#F1F5F9]">role</span> ={" "}
+                    <span className="text-[#34D399]">&quot;Engineer &amp; Tutor @ Softworica&quot;</span>;
+                  </div>
+                </div>
+              </>
+            )}
 
             {/* Social links */}
             <div className="flex flex-wrap items-center gap-2 pt-1">

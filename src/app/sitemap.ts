@@ -50,6 +50,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${base}/notes`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.5,
+    },
+    {
       url: `${base}/contact`,
       lastModified: now,
       changeFrequency: "yearly",
@@ -69,7 +75,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const projectRoutes: MetadataRoute.Sitemap = projects.map((project) => ({
+  const projectRoutes: MetadataRoute.Sitemap = projects
+    .filter((project) => project.status !== "concept")
+    .map((project) => ({
     url: `${base}/projects/${project.slug}`,
     lastModified: now,
     changeFrequency: "monthly" as const,
@@ -83,5 +91,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: post.featured ? 0.85 : 0.75,
   }));
 
-  return [...staticRoutes, ...projectRoutes, ...blogRoutes];
+  const noteRoutes: MetadataRoute.Sitemap = projects
+    .filter((project) => project.status === "concept")
+    .map((project) => ({
+      url: `${base}/notes/${project.slug}`,
+      lastModified: now,
+      changeFrequency: "yearly" as const,
+      priority: 0.4,
+    }));
+
+  return [...staticRoutes, ...projectRoutes, ...noteRoutes, ...blogRoutes];
 }
