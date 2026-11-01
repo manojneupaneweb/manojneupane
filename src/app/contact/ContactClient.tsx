@@ -51,6 +51,7 @@ interface FormState {
   budget: string;
   timeline: string;
   consent: boolean;
+  company: string;
 }
 
 interface FormErrors {
@@ -93,6 +94,7 @@ function ContactForm() {
     budget: "Not specified",
     timeline: "Not specified",
     consent: false,
+    company: "",
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -172,6 +174,7 @@ function ContactForm() {
           description: form.description.trim(),
           budget: form.budget !== "Not specified" ? form.budget : undefined,
           timeline: form.timeline !== "Not specified" ? form.timeline : undefined,
+          company: form.company,
         }),
       });
 
@@ -186,6 +189,7 @@ function ContactForm() {
           budget: "Not specified",
           timeline: "Not specified",
           consent: false,
+          company: "",
         });
         setErrors({});
       } else {
@@ -213,7 +217,7 @@ function ContactForm() {
         </h2>
         <p className="text-[#94A3B8] mb-6 leading-relaxed">
           Thank you for reaching out. I&apos;ve received your message and will
-          get back to you within a few business days.
+          reply within one business day.
         </p>
         <button
           onClick={() => setSubmitStatus("idle")}
@@ -231,8 +235,20 @@ function ContactForm() {
       onSubmit={handleSubmit}
       noValidate
       aria-labelledby="form-heading"
-      className="border border-[#d7dbd4] bg-white rounded-lg overflow-hidden"
+      className="relative border border-[#d7dbd4] bg-white rounded-lg overflow-hidden"
     >
+      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+        <label htmlFor="company">Company</label>
+        <input
+          id="company"
+          name="company"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={form.company}
+          onChange={handleChange}
+        />
+      </div>
       <div className="flex items-center justify-between gap-4 px-5 py-3 border-b border-[#e3e5e0] bg-[#f7f8f5]">
         <h2 id="form-heading" className="font-mono text-xs tracking-wide text-[#16181c]">
           inquiry.form
@@ -442,12 +458,12 @@ export default function ContactClient() {
         <div className="container relative">
           <span className="section-label">Contact</span>
           <h1 id="contact-heading" className="section-title mt-4 mb-5">
-            Get in Touch
+            Start a project
           </h1>
           <p className="section-subtitle">
             If you have a project inquiry, want to collaborate, or just want to ask
             something, fill out the form below. I read every message and respond to
-            genuine inquiries within a few business days.
+            genuine inquiries within one business day. Discovery, a written quote, then the build.
           </p>
         </div>
       </section>

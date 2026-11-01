@@ -45,11 +45,11 @@ export default function AboutPage() {
                     fill
                     className="object-cover object-top"
                     priority
-                    sizes="(max-width: 640px) 192px, 224px"
+                    sizes="224px"
                   />
                 </div>
               </div>
-              <p className="text-xs text-[#94A3B8] font-mono">Taking project inquiries</p>
+              <p className="text-xs text-[#94A3B8] font-mono">Available for freelance</p>
             </div>
 
             {/* Title & bio */}
@@ -62,11 +62,11 @@ export default function AboutPage() {
                 Full Stack Software Engineer · Programming Instructor · AI Enthusiast
               </p>
               <p className="text-sm text-[#94A3B8]">
-                Based in {siteConfig.country} · Available for freelance and remote opportunities
+                Based in {siteConfig.country} · Available for freelance
               </p>
               <div className="pt-2 flex flex-wrap gap-3 justify-center md:justify-start">
                 <Link href="/contact" className="btn-primary !text-sm !py-2.5 !px-5">
-                  Let&apos;s Build Together →
+                  Start a project
                 </Link>
                 <Link href="/projects" className="btn-secondary !text-sm !py-2.5 !px-5">
                   Explore Projects

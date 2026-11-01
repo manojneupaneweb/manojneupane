@@ -51,7 +51,7 @@ export default function NotFound() {
               { href: "/projects", label: "Featured Projects" },
               { href: "/skills", label: "Skills & Tech" },
               { href: "/blog", label: "Technical Blog" },
-              { href: "/contact", label: "Get in Touch" },
+              { href: "/contact", label: "Start a project" },
             ].map((link) => (
               <Link
                 key={link.href}

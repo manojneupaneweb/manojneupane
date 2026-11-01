@@ -81,6 +81,10 @@ export async function POST(req: NextRequest) {
     validationErrors.push("description must be at least 10 characters");
   }
 
+  if (typeof body.company === "string" && body.company.trim()) {
+    return NextResponse.json({ message: "Message received." });
+  }
+
   if (validationErrors.length > 0) {
     return NextResponse.json(
       {

@@ -5,6 +5,7 @@ import { siteConfig, projects } from "@/lib/data";
 import { buildHomeMetadata } from "@/lib/metadata";
 import RevealWrapper from "@/components/RevealWrapper";
 import SkillsBoard from "@/components/SkillsBoard";
+import StatCounters from "@/components/StatCounters";
 
 export const metadata: Metadata = buildHomeMetadata();
 
@@ -42,15 +43,15 @@ function HeroSection() {
         <div className="grid lg:grid-cols-[minmax(0,1fr)_320px] xl:grid-cols-[minmax(0,1fr)_380px] gap-12 lg:gap-16 items-center">
         <div>
           {/* Badge */}
-          <div className="animate-fade-in" style={{ animationDelay: "0.1s", opacity: 0 }}>
+          <div>
             <span className="hero-badge mb-6 inline-flex">
               <span className="live-dot mr-1" />
-              Available for freelance projects · Nepal
+              Available for freelance · Nepal
             </span>
           </div>
 
           {/* Main headline */}
-          <div className="animate-fade-in-up" style={{ animationDelay: "0.2s", opacity: 0 }}>
+          <div>
             <h1
               id="hero-heading"
               className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.08] tracking-tight mb-6"
@@ -64,7 +65,7 @@ function HeroSection() {
           </div>
 
           {/* Subheading */}
-          <div className="animate-fade-in-up" style={{ animationDelay: "0.35s", opacity: 0 }}>
+          <div>
             <p className="text-lg sm:text-xl text-[#94A3B8] leading-relaxed max-w-2xl mb-8">
               Full Stack Developer at{" "}
               <span className="text-[#F1F5F9] font-medium">Softworica</span>, Nepal.
@@ -74,25 +75,30 @@ function HeroSection() {
           </div>
 
           {/* CTAs */}
-          <div className="animate-fade-in-up flex flex-wrap items-center gap-4 mb-12" style={{ animationDelay: "0.5s", opacity: 0 }}>
-            <Link href="/projects" className="btn-primary group">
-              Explore My Work
+          <div className="flex flex-wrap items-center gap-4 mb-4">
+            <Link href="/contact" className="btn-primary group">
+              Start a project
               <Arrow className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </Link>
-            <Link href="/contact" className="btn-secondary">
-              Let&apos;s Work Together
+            <Link href="/projects" className="btn-secondary">
+              Explore My Work
             </Link>
           </div>
+          <p className="mb-12 text-sm text-[#b7bec8]">
+            I also teach Laravel and the MERN stack at Softworica.{" "}
+            <Link href="/about" className="text-[#7ee0e8] underline underline-offset-2">
+              Read how I teach
+            </Link>
+          </p>
 
           {/* Tech Stack pills */}
-          <div className="animate-fade-in" style={{ animationDelay: "0.65s", opacity: 0 }}>
+          <div>
             <p className="text-xs font-mono text-[#94A3B8] uppercase tracking-widest mb-3">Tech Stack</p>
             <div className="flex flex-wrap gap-2">
-              {techStack.map((tech, i) => (
+              {techStack.map((tech) => (
                 <span
                   key={tech}
                   className="skill-pill text-xs"
-                  style={{ animationDelay: `${0.7 + i * 0.07}s` }}
                 >
                   {tech}
                 </span>
@@ -102,24 +108,16 @@ function HeroSection() {
         </div>
 
         <aside className="hidden lg:block" aria-label="Current work">
-          <div className="rounded-lg border border-white/10 bg-[#0c0e12]">
-            <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/10">
+          <div className="rounded-lg border border-white/10 bg-[#0c0e12]/80">
+            <div className="px-4 py-2.5 border-b border-white/10">
               <span className="font-mono text-[11px] tracking-wide text-[#d5d8d2]">now.ts</span>
-              <span className="inline-flex items-center gap-1.5 font-mono text-[11px] text-[#6ee7b7]">
-                <span className="live-dot w-1.5 h-1.5" />
-                open
-              </span>
             </div>
-            <dl className="p-4 font-mono text-[12px] leading-6 text-[#b7bec8] grid grid-cols-[4.75rem_1fr] gap-y-1">
-              <dt className="text-[#7ee0e8]">role</dt><dd>full-stack engineer</dd>
-              <dt className="text-[#7ee0e8]">place</dt><dd>Softworica, Nepal</dd>
-              <dt className="text-[#7ee0e8]">builds</dt><dd>Laravel, Node, Next.js</dd>
-              <dt className="text-[#7ee0e8]">teaches</dt><dd>Laravel and MERN</dd>
-              <p className="col-span-2 pt-3 text-[#6b7280]">{"// most client work stays private"}</p>
-              <p className="col-span-2 text-[#f4f6f8]">
-                <span className="text-[#7ee0e8]">$</span> shipping production systems
-                <span className="cursor-blink">_</span>
-              </p>
+            <dl className="p-4 font-mono text-[12px] leading-6 text-[#c5ccd6] grid grid-cols-[4.75rem_1fr] gap-y-1">
+              <dt className="text-[#9ee7ee]">role</dt><dd>full-stack engineer</dd>
+              <dt className="text-[#9ee7ee]">place</dt><dd>Softworica, Nepal</dd>
+              <dt className="text-[#9ee7ee]">builds</dt><dd>Laravel, Node, Next.js</dd>
+              <dt className="text-[#9ee7ee]">teaches</dt><dd>Laravel and MERN</dd>
+              <p className="col-span-2 pt-3 text-[#a8b3c0]">Most client work stays private.</p>
             </dl>
           </div>
         </aside>
@@ -158,32 +156,6 @@ function QuoteSection() {
   );
 }
 
-// ─── Stats Bar ────────────────────────────────────────────────
-function StatsBar() {
-  const stats = [
-    { value: "2.5+", label: "Professional Experience" },
-    { value: "10+", label: "Projects Delivered" },
-    { value: "2", label: "Roles at Softworica" },
-    { value: "100s", label: "Students Taught" },
-  ];
-
-  return (
-    <section className="relative py-10 border-y border-[rgba(34,211,238,0.08)]" aria-label="Key statistics">
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(34,211,238,0.02)] to-transparent pointer-events-none" />
-      <div className="container">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat, i) => (
-            <RevealWrapper key={stat.label} delay={i * 80} className="text-center">
-              <div className="stat-number">{stat.value}</div>
-              <div className="text-sm text-[#94A3B8] mt-1 font-mono">{stat.label}</div>
-            </RevealWrapper>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ─── Section 2: About ─────────────────────────────────────────
 function AboutSection() {
   return (
@@ -203,7 +175,7 @@ function AboutSection() {
                   alt={`Portrait of ${siteConfig.name}`}
                   fill
                   className="object-cover object-top"
-                  sizes="(max-width: 640px) 288px, 320px"
+                  sizes="320px"
                 />
                 {/* Caption overlay */}
                 <div className="on-dark absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-[#111318]/90 to-transparent">
@@ -281,7 +253,7 @@ function ExperienceSection() {
       <div className="container relative">
         {/* Header */}
         <RevealWrapper className="space-y-4 mb-14 max-w-2xl">
-          <span className="section-label">Proven Experience</span>
+          <span className="section-label">Experience</span>
           <h2 id="experience-heading" className="section-title">
             Building Software.{" "}
             <span className="gradient-text">Teaching Engineering.</span>
@@ -670,15 +642,15 @@ function ContactSection() {
 
       <div className="container relative text-center space-y-10">
         <RevealWrapper className="space-y-5">
-          <span className="section-label">Get in Touch</span>
+          <span className="section-label">Start a project</span>
           <h2 id="contact-heading" className="section-title">
             Have an Idea?
             <br />
-            <span className="gradient-text">Let&apos;s Build It.</span>
+            <span className="gradient-text">Start a project.</span>
           </h2>
           <p className="section-subtitle mx-auto text-center">
-            Tell me about the product, website, or system you want to build. Let&apos;s
-            discuss the problem, the requirements, and a practical approach to delivering it.
+            Tell me the problem, the users, and the timeline. I reply within one business day.
+            Then we do a short discovery call, a written quote, and the build.
           </p>
         </RevealWrapper>
 
@@ -713,7 +685,7 @@ function ContactSection() {
 
         <RevealWrapper delay={160}>
           <Link href="/contact" className="btn-primary mx-auto">
-            Start a Project Inquiry <Arrow />
+            Start a project <Arrow />
           </Link>
         </RevealWrapper>
       </div>
@@ -727,7 +699,7 @@ export default function HomePage() {
     <>
       <HeroSection />
       <QuoteSection />
-      <StatsBar />
+      <StatCounters />
       <AboutSection />
       <ExperienceSection />
       <ProjectsSection />

@@ -37,6 +37,15 @@ export default function ServicesPage() {
           </p>
 
           {/* Important note */}
+          <ul className="mb-6 max-w-2xl space-y-2 text-sm text-[#4e5563]">
+            <li>Fixed-price work when the MVP scope is written down.</li>
+            <li>Hourly work for a smaller change or a review.</li>
+            <li>A monthly retainer for ongoing product work.</li>
+          </ul>
+          <p className="mb-6 max-w-2xl text-sm text-[#4e5563]">
+            I quote after I understand the requirements. I do not publish a rate card.
+          </p>
+
           <div className="card border border-[rgba(34,211,238,0.12)] max-w-2xl">
             <div className="flex gap-3">
               <span className="text-xl flex-shrink-0" aria-hidden="true">ℹ️</span>
@@ -154,7 +163,7 @@ export default function ServicesPage() {
 
           <div className="text-center">
             <Link href="/contact" className="btn-primary mx-auto">
-              Send an Inquiry
+              Start a project
             </Link>
           </div>
         </div>

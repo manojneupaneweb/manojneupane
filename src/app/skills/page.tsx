@@ -121,7 +121,7 @@ export default function SkillsPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact" className="btn-primary justify-center">
-              Get in Touch
+              Start a project
             </Link>
             <Link href="/projects" className="btn-secondary justify-center">
               View Projects
