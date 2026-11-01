@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { startRegistration } from "@simplewebauthn/browser";
 import Image from "next/image";
 import { siteConfig } from "@/lib/data";
 
@@ -11,6 +12,39 @@ export default function AdminSettingsPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const [fingerprintOn, setFingerprintOn] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/admin/webauthn")
+      .then((res) => res.json())
+      .then((data) => setFingerprintOn(Boolean(data.registered)))
+      .catch(() => setFingerprintOn(false));
+  }, []);
+
+  const registerFingerprint = async () => {
+    setStatus(null);
+    try {
+      const optionsRes = await fetch("/api/admin/webauthn", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "register-options" }),
+      });
+      const options = await optionsRes.json();
+      if (!optionsRes.ok) throw new Error(options.error || "Could not start fingerprint setup.");
+      const credential = await startRegistration({ optionsJSON: options });
+      const verifyRes = await fetch("/api/admin/webauthn", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "register-verify", response: credential }),
+      });
+      const data = await verifyRes.json();
+      if (!verifyRes.ok) throw new Error(data.error || "Fingerprint was not saved.");
+      setFingerprintOn(true);
+      setStatus({ type: "success", text: "Fingerprint saved for this server. Use it on the admin login page." });
+    } catch (err) {
+      setStatus({ type: "error", text: err instanceof Error ? err.message : "Fingerprint setup failed." });
+    }
+  };
 
   // Fetch settings info
   const fetchSettings = () => {
@@ -226,6 +260,14 @@ export default function AdminSettingsPage() {
                 HMAC-SHA256 Token (HTTP-Only, Strict SameSite)
               </div>
             </div>
+
+            <button
+              type="button"
+              onClick={registerFingerprint}
+              className="w-full py-2.5 px-4 rounded-lg border border-[#334155] text-sm font-semibold text-[#F8FAFC] hover:border-[#22D3EE]"
+            >
+              {fingerprintOn ? "Replace fingerprint on this device" : "Register fingerprint"}
+            </button>
 
             <div className="text-xs text-[#64748B] leading-relaxed">
               Tip: Changing your password here persists immediately to the server. Keep your administrative credentials secure and do not share them.

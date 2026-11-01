@@ -1,11 +1,18 @@
 import fs from "fs";
 import path from "path";
 
+export interface AdminPasskey {
+  id: string;
+  publicKey: string;
+  counter: number;
+}
+
 export interface AdminSecuritySettings {
   customPasswordHash?: string;
   customPasswordSalt?: string;
   lastPasswordChangedAt?: string;
   lastLoginAt?: string;
+  passkey?: AdminPasskey;
 }
 
 const SETTINGS_FILE = path.join(process.cwd(), ".admin-settings.json");

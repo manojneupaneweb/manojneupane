@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import CursorRing from "@/components/CursorRing";
+import SiteFrame from "@/components/SiteFrame";
 import { siteConfig } from "@/lib/data";
 
 // ─── Root Layout Metadata ────────────────────────────────────────────────────
@@ -153,18 +152,7 @@ export default function RootLayout({
         <div className="site-grid" aria-hidden="true" />
         <CursorRing />
         <div className="relative z-10">
-          {/* Skip-to-content for keyboard and screen-reader users */}
-          <a
-            href="#main-content"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#2563EB] focus:text-white focus:rounded-md focus:outline-none focus:ring-2 focus:ring-[#18181B]"
-          >
-            Skip to content
-          </a>
-          <Header />
-          <main id="main-content" tabIndex={-1}>
-            {children}
-          </main>
-          <Footer />
+          <SiteFrame>{children}</SiteFrame>
         </div>
       </body>
     </html>

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, Suspense } from "react";
+import { useEffect, useState, Suspense } from "react";
+import { startAuthentication } from "@simplewebauthn/browser";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
@@ -13,6 +14,48 @@ function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [fingerprintReady, setFingerprintReady] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const status = await fetch("/api/admin/webauthn").then((res) => res.json()).catch(() => null);
+      if (!status?.registered || cancelled) return;
+      if (!window.PublicKeyCredential) return;
+      const available = await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable().catch(() => false);
+      if (!cancelled && available) setFingerprintReady(true);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const useFingerprint = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const optionsRes = await fetch("/api/admin/webauthn", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "login-options" }),
+      });
+      const options = await optionsRes.json();
+      if (!optionsRes.ok) throw new Error(options.error || "Fingerprint is not set up.");
+      const assertion = await startAuthentication({ optionsJSON: options });
+      const verifyRes = await fetch("/api/admin/webauthn", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "login-verify", response: assertion, from }),
+      });
+      const data = await verifyRes.json();
+      if (!verifyRes.ok) throw new Error(data.error || "Fingerprint was not accepted.");
+      router.push(data.redirect || "/admin/analytics");
+      router.refresh();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Fingerprint login failed.");
+      setLoading(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -100,6 +143,17 @@ function LoginForm() {
           </button>
         </div>
       </div>
+
+      {fingerprintReady && (
+        <button
+          type="button"
+          onClick={useFingerprint}
+          disabled={loading}
+          className="w-full py-2.5 px-4 rounded-lg border border-[#1E314F] text-sm font-semibold text-[#F8FAFC] hover:border-[#38BDF8] disabled:opacity-50"
+        >
+          Use fingerprint
+        </button>
+      )}
 
       <button
         type="submit"
