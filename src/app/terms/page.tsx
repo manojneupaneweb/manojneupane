@@ -12,13 +12,13 @@ export const metadata: Metadata = buildMetadata({
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen text-[#F8FAFC] ">
+    <main className="min-h-screen text-[#F1F5F9] ">
       <section
         aria-labelledby="terms-heading"
-        className="border-b border-[#334155] py-20 px-6"
+        className="border-b border-[rgba(255,255,255,0.06)] pt-28 pb-16 sm:pt-36 sm:pb-20"
       >
-        <div className="max-w-3xl mx-auto">
-          <p className="text-[#3B82F6] text-sm font-medium tracking-widest uppercase mb-3">
+        <div className="container">
+          <p className="text-[#22D3EE] text-sm font-medium tracking-widest uppercase mb-3">
             Legal
           </p>
           <h1
@@ -32,12 +32,12 @@ export default function TermsPage() {
         </div>
       </section>
 
-      <article className="max-w-3xl mx-auto px-6 py-16 space-y-12 text-[#94A3B8] leading-relaxed">
+      <article className="container py-16 space-y-12 text-[#94A3B8] leading-relaxed">
 
         <section aria-labelledby="acceptance-heading">
           <h2
             id="acceptance-heading"
-            className="text-xl font-bold text-[#F8FAFC] mb-4"
+            className="text-xl font-bold text-[#F1F5F9] mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Acceptance
@@ -46,7 +46,7 @@ export default function TermsPage() {
             By visiting{" "}
             <a
               href={siteConfig.url}
-              className="text-[#3B82F6] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] rounded"
+              className="text-[#22D3EE] hover:text-[#67E8F9] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] rounded"
             >
               {siteConfig.url}
             </a>
@@ -58,7 +58,7 @@ export default function TermsPage() {
         <section aria-labelledby="purpose-heading">
           <h2
             id="purpose-heading"
-            className="text-xl font-bold text-[#F8FAFC] mb-4"
+            className="text-xl font-bold text-[#F1F5F9] mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Purpose of This Site
@@ -74,7 +74,7 @@ export default function TermsPage() {
         <section aria-labelledby="content-heading">
           <h2
             id="content-heading"
-            className="text-xl font-bold text-[#F8FAFC] mb-4"
+            className="text-xl font-bold text-[#F1F5F9] mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Content Ownership
@@ -89,7 +89,7 @@ export default function TermsPage() {
               "Quote brief excerpts with attribution",
             ].map((item) => (
               <li key={item} className="flex gap-3">
-                <span className="text-[#22D3EE] flex-shrink-0" aria-hidden="true">✓</span>
+                <span className="text-[#0F766E] flex-shrink-0" aria-hidden="true">✓</span>
                 {item}
               </li>
             ))}
@@ -112,7 +112,7 @@ export default function TermsPage() {
         <section aria-labelledby="contact-form-heading">
           <h2
             id="contact-form-heading"
-            className="text-xl font-bold text-[#F8FAFC] mb-4"
+            className="text-xl font-bold text-[#F1F5F9] mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Contact Form
@@ -128,7 +128,7 @@ export default function TermsPage() {
         <section aria-labelledby="accuracy-heading">
           <h2
             id="accuracy-heading"
-            className="text-xl font-bold text-[#F8FAFC] mb-4"
+            className="text-xl font-bold text-[#F1F5F9] mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Accuracy of Information
@@ -144,7 +144,7 @@ export default function TermsPage() {
         <section aria-labelledby="external-links-heading">
           <h2
             id="external-links-heading"
-            className="text-xl font-bold text-[#F8FAFC] mb-4"
+            className="text-xl font-bold text-[#F1F5F9] mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             External Links
@@ -159,7 +159,7 @@ export default function TermsPage() {
         <section aria-labelledby="liability-heading">
           <h2
             id="liability-heading"
-            className="text-xl font-bold text-[#F8FAFC] mb-4"
+            className="text-xl font-bold text-[#F1F5F9] mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Limitation of Liability
@@ -175,7 +175,7 @@ export default function TermsPage() {
         <section aria-labelledby="changes-terms-heading">
           <h2
             id="changes-terms-heading"
-            className="text-xl font-bold text-[#F8FAFC] mb-4"
+            className="text-xl font-bold text-[#F1F5F9] mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Changes to These Terms
@@ -190,7 +190,7 @@ export default function TermsPage() {
         <section aria-labelledby="contact-terms-heading">
           <h2
             id="contact-terms-heading"
-            className="text-xl font-bold text-[#F8FAFC] mb-4"
+            className="text-xl font-bold text-[#F1F5F9] mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Contact
@@ -199,7 +199,7 @@ export default function TermsPage() {
             Questions about these terms can be directed to{" "}
             <a
               href={`mailto:${siteConfig.email}`}
-              className="text-[#3B82F6] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] rounded"
+              className="text-[#22D3EE] hover:text-[#67E8F9] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] rounded"
             >
               {siteConfig.email}
             </a>
@@ -207,16 +207,16 @@ export default function TermsPage() {
           </p>
         </section>
 
-        <div className="border-t border-[#334155] pt-8 flex gap-6 flex-wrap">
+        <div className="border-t border-[rgba(255,255,255,0.06)] pt-8 flex gap-6 flex-wrap">
           <Link
             href="/"
-            className="text-sm text-[#3B82F6] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] rounded"
+            className="text-sm text-[#22D3EE] hover:text-[#67E8F9] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] rounded"
           >
             ← Back to home
           </Link>
           <Link
             href="/privacy-policy"
-            className="text-sm text-[#3B82F6] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] rounded"
+            className="text-sm text-[#22D3EE] hover:text-[#67E8F9] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] rounded"
           >
             Privacy Policy →
           </Link>

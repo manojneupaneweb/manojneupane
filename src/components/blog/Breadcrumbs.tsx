@@ -46,7 +46,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
                 ) : (
                   <Link
                     href={item.url}
-                    className="hover:text-[#F8FAFC] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#3B82F6] rounded"
+                    className="hover:text-[#F1F5F9] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#22D3EE] rounded"
                   >
                     {item.name}
                   </Link>

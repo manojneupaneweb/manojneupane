@@ -16,24 +16,30 @@ export default function EducationPage() {
   const verifiedEntries = education.filter((e) => e.status !== "unverified");
 
   return (
-    <main className="min-h-screen text-[#F8FAFC] ">
+    <main className="min-h-screen">
       {/* Header */}
       <section
         aria-labelledby="education-heading"
-        className="border-b border-[#334155] py-20 px-6"
+        className="pt-28 pb-16 sm:pt-36 sm:pb-20 relative overflow-hidden"
       >
-        <div className="max-w-4xl mx-auto">
-          <p className="text-[#3B82F6] text-sm font-medium tracking-widest uppercase mb-3">
-            Education
-          </p>
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(34,211,238,0.15)] to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(34,211,238,0.08)] to-transparent" />
+          <div
+            className="absolute top-1/2 right-0 w-[400px] h-[400px] rounded-full opacity-10"
+            style={{ background: "radial-gradient(circle, rgba(168,85,247,0.4) 0%, transparent 70%)" }}
+          />
+        </div>
+        <div className="container relative">
+          <span className="section-label">Education</span>
           <h1
             id="education-heading"
-            className="text-4xl md:text-5xl font-bold mb-5 leading-tight"
+            className="section-title mt-4 mb-5"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Education &amp; Certifications
           </h1>
-          <p className="text-[#94A3B8] text-lg max-w-2xl">
+          <p className="section-subtitle">
             Academic background and professional training. Details are published only when
             they can be verified from original sources.
           </p>
@@ -43,12 +49,12 @@ export default function EducationPage() {
       {/* Education */}
       <section
         aria-labelledby="formal-education-heading"
-        className="py-16 px-6 border-b border-[#334155]"
+        className="py-16 border-t border-b border-[rgba(255,255,255,0.06)]"
       >
-        <div className="max-w-4xl mx-auto">
+        <div className="container">
           <h2
             id="formal-education-heading"
-            className="text-2xl font-bold mb-8 text-[#F8FAFC]"
+            className="text-2xl font-bold mb-8 text-[#F1F5F9]"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Formal Education
@@ -61,20 +67,20 @@ export default function EducationPage() {
                 <article
                   key={edu.id}
                   aria-labelledby={`edu-${edu.id}-heading`}
-                  className="bg-[#111827] border border-[#334155] rounded-2xl p-7"
+                  className="card-glow p-7"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
                     <div>
                       <h3
                         id={`edu-${edu.id}-heading`}
-                        className="text-[#F8FAFC] font-bold text-lg"
+                        className="text-[#F1F5F9] font-bold text-lg"
                       >
                         {edu.degree}
                         {edu.field && <span className="text-[#94A3B8] font-normal"> in {edu.field}</span>}
                       </h3>
                       <p className="text-[#22D3EE] font-medium">{edu.institution}</p>
                     </div>
-                    <span className="text-[#94A3B8] text-sm flex-shrink-0">{edu.period}</span>
+                    <span className="tag font-mono flex-shrink-0">{edu.period}</span>
                   </div>
                   {edu.description && (
                     <p className="text-[#94A3B8] text-sm leading-relaxed">{edu.description}</p>
@@ -86,15 +92,15 @@ export default function EducationPage() {
 
           {/* Unverified / placeholder notice */}
           {unverifiedEntries.length > 0 && (
-            <div className="bg-[#111827] border border-[#334155] rounded-2xl p-7">
+            <div className="card border border-[rgba(255,255,255,0.06)] p-7">
               <div className="flex gap-4 items-start">
                 <span className="text-2xl flex-shrink-0" aria-hidden="true">🔍</span>
                 <div>
                   <div className="flex items-center gap-2 mb-2">
-                    <h3 className="text-[#F8FAFC] font-semibold">
+                    <h3 className="text-[#F1F5F9] font-semibold">
                       Details Being Verified
                     </h3>
-                    <span className="px-2 py-0.5 text-xs bg-[#94A3B8]/10 text-[#94A3B8] border border-[#94A3B8]/30 rounded-full">
+                    <span className="px-2 py-0.5 text-xs bg-[rgba(255,255,255,0.06)] text-[#94A3B8] border border-[rgba(255,255,255,0.08)] rounded-full">
                       Pending
                     </span>
                   </div>
@@ -107,7 +113,7 @@ export default function EducationPage() {
                     For specific details,{" "}
                     <Link
                       href="/contact"
-                      className="text-[#3B82F6] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] rounded"
+                      className="text-[#22D3EE] hover:text-[#67E8F9] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] rounded"
                     >
                       contact me directly
                     </Link>{" "}
@@ -123,12 +129,12 @@ export default function EducationPage() {
       {/* Certifications */}
       <section
         aria-labelledby="certifications-heading"
-        className="py-16 px-6 border-b border-[#334155] bg-[#111827]"
+        className="py-16 border-b border-[rgba(255,255,255,0.06)]"
       >
-        <div className="max-w-4xl mx-auto">
+        <div className="container">
           <h2
             id="certifications-heading"
-            className="text-2xl font-bold mb-8 text-[#F8FAFC]"
+            className="text-2xl font-bold mb-8 text-[#F1F5F9]"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Certifications
@@ -140,20 +146,20 @@ export default function EducationPage() {
                 <article
                   key={cert.id}
                   aria-labelledby={`cert-${cert.id}-heading`}
-                  className="bg-[#0B1120] border border-[#334155] rounded-2xl p-7"
+                  className="card-glow p-7"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-2">
                     <div>
                       <h3
                         id={`cert-${cert.id}-heading`}
-                        className="text-[#F8FAFC] font-bold"
+                        className="text-[#F1F5F9] font-bold"
                       >
                         {cert.name}
                       </h3>
                       <p className="text-[#22D3EE] text-sm">{cert.provider}</p>
                     </div>
                     {cert.issueDate && (
-                      <span className="text-[#94A3B8] text-sm flex-shrink-0">
+                      <span className="tag font-mono flex-shrink-0">
                         {cert.issueDate}
                       </span>
                     )}
@@ -168,7 +174,7 @@ export default function EducationPage() {
                       href={cert.credentialUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block mt-3 text-sm text-[#3B82F6] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] rounded"
+                      className="inline-block mt-3 text-sm text-[#22D3EE] hover:text-[#67E8F9] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] rounded"
                     >
                       View Credential ↗
                     </a>
@@ -177,10 +183,10 @@ export default function EducationPage() {
               ))}
             </div>
           ) : (
-            <div className="bg-[#0B1120] border border-[#334155] rounded-2xl p-7 flex gap-4 items-start">
+            <div className="card border border-[rgba(255,255,255,0.06)] p-7 flex gap-4 items-start">
               <span className="text-2xl flex-shrink-0" aria-hidden="true">📜</span>
               <div>
-                <h3 className="text-[#F8FAFC] font-semibold mb-2">
+                <h3 className="text-[#F1F5F9] font-semibold mb-2">
                   Certifications Pending Verification
                 </h3>
                 <p className="text-[#94A3B8] text-sm leading-relaxed">
@@ -188,14 +194,14 @@ export default function EducationPage() {
                   for public disclosure. My technical knowledge is demonstrated through{" "}
                   <Link
                     href="/projects"
-                    className="text-[#3B82F6] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] rounded"
+                    className="text-[#22D3EE] hover:text-[#67E8F9] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] rounded"
                   >
                     deployed projects
                   </Link>{" "}
                   and{" "}
                   <Link
                     href="/skills"
-                    className="text-[#3B82F6] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] rounded"
+                    className="text-[#22D3EE] hover:text-[#67E8F9] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] rounded"
                   >
                     documented skills
                   </Link>
@@ -210,13 +216,13 @@ export default function EducationPage() {
       {/* Practical Experience note */}
       <section
         aria-labelledby="practical-heading"
-        className="py-16 px-6"
+        className="py-16"
       >
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-[#111827] border border-[#3B82F6]/30 rounded-2xl p-8">
+        <div className="container">
+          <div className="card-glow border border-[rgba(34,211,238,0.15)] p-8">
             <h2
               id="practical-heading"
-              className="text-xl font-bold mb-4 text-[#F8FAFC]"
+              className="text-xl font-bold mb-4 text-[#F1F5F9]"
               style={{ fontFamily: "var(--font-display)" }}
             >
               Practical Experience
@@ -228,7 +234,7 @@ export default function EducationPage() {
                 href="https://linktogovernment.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#3B82F6] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] rounded"
+                className="text-[#22D3EE] hover:text-[#67E8F9] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] rounded"
               >
                 LinkToGovernment
               </a>
@@ -238,13 +244,13 @@ export default function EducationPage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/projects"
-                className="text-sm text-[#3B82F6] font-medium hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] rounded"
+                className="text-sm text-[#22D3EE] font-medium hover:text-[#67E8F9] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] rounded"
               >
                 View my projects →
               </Link>
               <Link
                 href="/about"
-                className="text-sm text-[#3B82F6] font-medium hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] rounded"
+                className="text-sm text-[#94A3B8] font-medium hover:text-[#F1F5F9] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] rounded"
               >
                 About my background →
               </Link>

@@ -46,9 +46,9 @@ export default function CodeBlock({ snippets, defaultTab = 0 }: CodeBlockProps) 
   };
 
   return (
-    <div className="my-6 rounded-xl overflow-hidden border border-[#334155] bg-[#0E1626] shadow-xl">
+    <div className="on-dark my-6 rounded-lg overflow-hidden border border-white/10 bg-[#111318]">
       {/* Header bar: Tabs & Actions */}
-      <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-2 bg-[#141F36] border-b border-[#334155] text-xs font-mono">
+      <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-2 bg-[#0F1A2E] border-b border-[rgba(255,255,255,0.06)] text-xs font-mono">
         {/* Left: Language Tabs or Filename */}
         <div className="flex items-center gap-1.5 overflow-x-auto py-0.5 max-w-full">
           {snippets.length > 1 ? (
@@ -60,10 +60,10 @@ export default function CodeBlock({ snippets, defaultTab = 0 }: CodeBlockProps) 
                   setActiveTab(idx);
                   setCopied(false);
                 }}
-                className={`px-3 py-1.5 rounded-md font-medium transition-all text-xs whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#3B82F6] ${
+                className={`px-3 py-1.5 rounded-md font-medium transition-all text-xs whitespace-nowrap focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#22D3EE] ${
                   activeTab === idx
-                    ? "bg-[#3B82F6] text-white shadow-sm"
-                    : "text-[#94A3B8] hover:text-[#F8FAFC] hover:bg-[#1E2E4E]"
+                    ? "bg-[rgba(34,211,238,0.15)] text-[#22D3EE] border border-[rgba(34,211,238,0.3)]"
+                    : "text-[#94A3B8] hover:text-[#F1F5F9] hover:bg-[rgba(255,255,255,0.05)]"
                 }`}
               >
                 {snip.label || snip.language}
@@ -71,8 +71,8 @@ export default function CodeBlock({ snippets, defaultTab = 0 }: CodeBlockProps) 
             ))
           ) : (
             <div className="flex items-center gap-2 text-[#94A3B8] px-2 py-1">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#3B82F6]" aria-hidden="true" />
-              <span className="font-semibold text-[#F8FAFC]">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#22D3EE]" aria-hidden="true" />
+              <span className="font-semibold text-[#CBD5E1]">
                 {currentSnippet.filename || currentSnippet.label || currentSnippet.language.toUpperCase()}
               </span>
             </div>
@@ -92,17 +92,17 @@ export default function CodeBlock({ snippets, defaultTab = 0 }: CodeBlockProps) 
             type="button"
             onClick={handleCopy}
             aria-label="Copy code to clipboard"
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md font-medium text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] ${
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md font-medium text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] ${
               copied
-                ? "bg-[#10B981]/20 text-[#34D399] border border-[#10B981]/40"
+                ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/40"
                 : copyError
                 ? "bg-red-500/20 text-red-400 border border-red-500/40"
-                : "bg-[#1E2E4E] hover:bg-[#283C66] text-[#CBD5E1] border border-[#2D4470]"
+                : "bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(34,211,238,0.08)] text-[#94A3B8] hover:text-[#22D3EE] border border-[rgba(255,255,255,0.08)] hover:border-[rgba(34,211,238,0.25)]"
             }`}
           >
             {copied ? (
               <>
-                <svg className="w-3.5 h-3.5 text-[#34D399]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <svg className="w-3.5 h-3.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
                 <span>Copied!</span>
@@ -122,7 +122,7 @@ export default function CodeBlock({ snippets, defaultTab = 0 }: CodeBlockProps) 
       </div>
 
       {/* Code Area */}
-      <div className="relative p-4 overflow-x-auto text-sm font-mono leading-relaxed bg-[#0B1120]">
+      <div className="relative p-4 overflow-x-auto text-sm font-mono leading-relaxed bg-[#070E1A]">
         <pre className="text-[#E2E8F0] whitespace-pre tab-4">
           <code>{currentSnippet.code}</code>
         </pre>

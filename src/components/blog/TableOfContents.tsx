@@ -46,7 +46,7 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
-      const yOffset = -90; // offset for sticky header
+      const yOffset = -90;
       const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
       setActiveId(id);
@@ -57,11 +57,11 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
   return (
     <div>
       {/* Mobile Collapsible TOC */}
-      <div className="lg:hidden mb-8 p-4 rounded-xl border border-[#334155] bg-[#111827]/80 backdrop-blur-sm">
+      <div className="lg:hidden mb-8 p-4 rounded-xl border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] backdrop-blur-sm">
         <button
           type="button"
           onClick={() => setIsOpenMobile(!isOpenMobile)}
-          className="w-full flex items-center justify-between text-left font-semibold text-sm text-[#F8FAFC]"
+          className="w-full flex items-center justify-between text-left font-semibold text-sm text-[#F1F5F9]"
           aria-expanded={isOpenMobile}
         >
           <span className="flex items-center gap-2">
@@ -79,7 +79,7 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
         </button>
 
         {isOpenMobile && (
-          <nav className="mt-4 pt-3 border-t border-[#334155] space-y-1.5" aria-label="Table of contents mobile">
+          <nav className="mt-4 pt-3 border-t border-[rgba(255,255,255,0.06)] space-y-1.5" aria-label="Table of contents mobile">
             {items.map((item, idx) => (
               <button
                 key={item.id}
@@ -87,8 +87,8 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
                 onClick={() => scrollToSection(item.id)}
                 className={`block w-full text-left text-xs py-1.5 px-2 rounded-md transition-colors ${
                   activeId === item.id
-                    ? "bg-[#3B82F6]/15 text-[#22D3EE] font-semibold"
-                    : "text-[#94A3B8] hover:text-[#F8FAFC] hover:bg-[#1E293B]"
+                    ? "bg-[rgba(34,211,238,0.1)] text-[#22D3EE] font-semibold"
+                    : "text-[#94A3B8] hover:text-[#F1F5F9] hover:bg-[rgba(255,255,255,0.04)]"
                 } ${item.level === 3 ? "pl-5" : ""}`}
               >
                 <span className="text-[#64748B] font-mono mr-1.5">{idx + 1}.</span>
@@ -102,11 +102,11 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
       {/* Desktop Sticky TOC */}
       <nav
         aria-label="Table of contents"
-        className="hidden lg:block sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto p-5 rounded-2xl border border-[#334155] bg-[#111827]/70 backdrop-blur-md"
+        className="hidden lg:block sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto p-5 rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] backdrop-blur-md"
       >
-        <div className="flex items-center gap-2 mb-4 pb-3 border-b border-[#334155]">
+        <div className="flex items-center gap-2 mb-4 pb-3 border-b border-[rgba(255,255,255,0.06)]">
           <span className="text-base">📑</span>
-          <h2 className="text-xs font-semibold uppercase tracking-widest text-[#3B82F6]">
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-[#22D3EE]">
             Table of Contents
           </h2>
         </div>
@@ -118,8 +118,8 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
                 onClick={() => scrollToSection(item.id)}
                 className={`block w-full text-left py-1.5 px-2.5 rounded-lg transition-all leading-normal ${
                   activeId === item.id
-                    ? "bg-[#3B82F6]/15 text-[#22D3EE] font-semibold border-l-2 border-[#22D3EE]"
-                    : "text-[#94A3B8] hover:text-[#F8FAFC] hover:bg-[#1E293B]/80"
+                    ? "bg-[rgba(34,211,238,0.1)] text-[#22D3EE] font-semibold border-l-2 border-[#22D3EE]"
+                    : "text-[#94A3B8] hover:text-[#F1F5F9] hover:bg-[rgba(255,255,255,0.04)]"
                 } ${item.level === 3 ? "pl-5 text-[11px]" : ""}`}
               >
                 <span className="text-[#64748B] font-mono mr-1.5 text-[10px]">

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CursorRing from "@/components/CursorRing";
 import { siteConfig } from "@/lib/data";
-import { Analytics } from "@vercel/analytics/react";
 
 // ─── Root Layout Metadata ────────────────────────────────────────────────────
 // Provides the global title template only. Every child page MUST export its own
@@ -135,45 +135,37 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Favicon */}
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+        <link rel="apple-touch-icon" href="/favicon.svg" />
+        {/* Google Fonts */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
         {/* Theme color for mobile browser chrome */}
-        <meta name="theme-color" content="#0B1120" />
+        <meta name="theme-color" content="#080D1A" />
         {/* Sitewide Person + WebSite structured data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(sitewideJsonLd) }}
         />
       </head>
-      <body className="bg-[#0B1120] text-[#F8FAFC] font-sans antialiased relative min-h-screen">
-        {/* Ambient background decoration — Midnight Electric palette */}
-        <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden" aria-hidden="true">
-          {/* Top-left Electric blue bloom */}
-          <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-[#3B82F6]/12 rounded-full blur-[140px]" />
-          {/* Top-right Cyan bloom */}
-          <div className="absolute top-[12%] -right-40 w-[550px] h-[550px] bg-[#22D3EE]/10 rounded-full blur-[140px]" />
-          {/* Middle Blue glow */}
-          <div className="absolute top-[45%] left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[#3B82F6]/8 rounded-full blur-[160px]" />
-          {/* Lower Cyan/Green bloom */}
-          <div className="absolute top-[75%] -left-32 w-[550px] h-[550px] bg-[#34D399]/8 rounded-full blur-[140px]" />
-          {/* Bottom-right Blue glow */}
-          <div className="absolute -bottom-40 right-10 w-[600px] h-[600px] bg-[#3B82F6]/10 rounded-full blur-[140px]" />
-          {/* Subtle dot matrix grid overlay */}
-          <div className="absolute inset-0 bg-[radial-gradient(rgba(148,163,184,0.07)_1px,transparent_1px)] [background-size:24px_24px]" />
+      <body className="font-sans antialiased relative min-h-screen text-[#16181c]">
+        <div className="site-grid" aria-hidden="true" />
+        <CursorRing />
+        <div className="relative z-10">
+          {/* Skip-to-content for keyboard and screen-reader users */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#2563EB] focus:text-white focus:rounded-md focus:outline-none focus:ring-2 focus:ring-[#18181B]"
+          >
+            Skip to content
+          </a>
+          <Header />
+          <main id="main-content" tabIndex={-1}>
+            {children}
+          </main>
+          <Footer />
         </div>
-
-        {/* Skip-to-content for keyboard and screen-reader users */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#3B82F6] focus:text-white focus:rounded-md focus:outline-none focus:ring-2 focus:ring-white"
-        >
-          Skip to content
-        </a>
-        <Header />
-        <main id="main-content" tabIndex={-1}>
-          {children}
-        </main>
-        <Footer />
-        <Analytics />
       </body>
     </html>
   );

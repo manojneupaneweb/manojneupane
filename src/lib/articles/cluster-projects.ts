@@ -424,8 +424,8 @@ export function InvoicePaymentCard({ invoice }: InvoiceProps) {
   const isPaid = invoice.status === "PAID";
 
   return (
-    <div className="bg-[#111827] border border-[#334155] rounded-2xl p-6 text-white max-w-lg mx-auto shadow-xl">
-      <div className="flex justify-between items-start border-b border-[#334155] pb-4 mb-4">
+    <div className="bg-[#F4F4F5] border border-[#E4E4E7] rounded-2xl p-6 text-white max-w-lg mx-auto shadow-xl">
+      <div className="flex justify-between items-start border-b border-[#E4E4E7] pb-4 mb-4">
         <div>
           <span className="text-xs font-semibold uppercase tracking-wider text-sky-400">Fee Invoice</span>
           <h2 className="text-xl font-bold text-slate-100">{invoice.title}</h2>
@@ -453,7 +453,7 @@ export function InvoicePaymentCard({ invoice }: InvoiceProps) {
           <span>Payment Deadline:</span>
           <span>{new Date(invoice.dueDate).toLocaleDateString("en-NP", { month: "short", day: "numeric", year: "numeric" })}</span>
         </div>
-        <div className="border-t border-[#334155] pt-2 flex justify-between font-bold text-base text-slate-100">
+        <div className="border-t border-[#E4E4E7] pt-2 flex justify-between font-bold text-base text-slate-100">
           <span>Total Payable:</span>
           <span className="text-sky-400 text-lg">Rs. {invoice.totalDue.toLocaleString("en-NP")}</span>
         </div>
@@ -779,7 +779,7 @@ export function RoomCard({ listing }: ListingProps) {
   const whatsappUrl = \`https://wa.me/977\${listing.landlord.phone.replace(/\\D/g, "")}?text=Namaste, I saw your room listing for \${encodeURIComponent(listing.title)} in \${encodeURIComponent(listing.area)}. Is it still available?\`;
 
   return (
-    <div className="bg-[#111827] border border-[#334155] rounded-2xl overflow-hidden hover:border-sky-500/50 transition-all flex flex-col group">
+    <div className="bg-[#F4F4F5] border border-[#E4E4E7] rounded-2xl overflow-hidden hover:border-sky-500/50 transition-all flex flex-col group">
       <div className="relative h-48 w-full bg-slate-800">
         <Image
           src={listing.photos[0] || "/placeholder-room.jpg"}
@@ -805,21 +805,21 @@ export function RoomCard({ listing }: ListingProps) {
           <h3 className="text-base font-bold text-slate-100 line-clamp-1 mb-2">{listing.title}</h3>
 
           <div className="flex flex-wrap gap-2 text-xs text-slate-300 mb-4">
-            <span className="flex items-center gap-1 bg-[#334155] px-2 py-0.5 rounded">
+            <span className="flex items-center gap-1 bg-[#E4E4E7] px-2 py-0.5 rounded">
               <Droplet className="w-3 h-3 text-cyan-400" /> {listing.amenities.waterSupply}
             </span>
-            <span className="flex items-center gap-1 bg-[#334155] px-2 py-0.5 rounded">
+            <span className="flex items-center gap-1 bg-[#E4E4E7] px-2 py-0.5 rounded">
               <Bike className="w-3 h-3 text-emerald-400" /> {listing.amenities.parking}
             </span>
             {listing.amenities.wifiIncluded && (
-              <span className="flex items-center gap-1 bg-[#334155] px-2 py-0.5 rounded">
+              <span className="flex items-center gap-1 bg-[#E4E4E7] px-2 py-0.5 rounded">
                 <Wifi className="w-3 h-3 text-amber-400" /> Free WiFi
               </span>
             )}
           </div>
         </div>
 
-        <div className="border-t border-[#334155] pt-4 flex items-center justify-between">
+        <div className="border-t border-[#E4E4E7] pt-4 flex items-center justify-between">
           <div className="text-xs">
             <span className="text-slate-400 block">Owner</span>
             <span className="font-semibold text-slate-200">{listing.landlord.name}</span>

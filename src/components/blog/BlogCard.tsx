@@ -9,19 +9,17 @@ interface BlogCardProps {
 export default function BlogCard({ post, featured = false }: BlogCardProps) {
   return (
     <article
-      className={`group card flex flex-col justify-between transition-all duration-300 hover:border-[#3B82F6]/50 hover:shadow-xl hover:shadow-[#3B82F6]/5 ${
-        featured ? "lg:col-span-2 border-[#3B82F6]/30 bg-gradient-to-br from-[#111827] to-[#142340]" : ""
+      className={`group card flex flex-col justify-between ${
+        featured ? "lg:col-span-2 border-[rgba(34,211,238,0.2)]" : ""
       }`}
     >
       <div>
-        {/* Meta badges: Category & Reading Time */}
+        {/* Meta badges */}
         <div className="flex items-center justify-between gap-2 mb-3 flex-wrap">
-          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium font-mono bg-[#3B82F6]/10 text-[#818CF8] border border-[#3B82F6]/30">
-            {post.category}
-          </span>
-          <div className="flex items-center gap-3 text-xs text-[#94A3B8]">
+          <span className="tag text-xs">{post.category}</span>
+          <div className="flex items-center gap-3 text-xs text-[#94A3B8] font-mono">
             <span>⏱️ {post.readingTime}</span>
-            <span>·</span>
+            <span className="text-[#94A3B8]/40">·</span>
             <time dateTime={post.publishedAt}>
               {new Date(post.publishedAt).toLocaleDateString("en-US", {
                 month: "short",
@@ -34,12 +32,11 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
 
         {/* Title */}
         <h3
-          className={`font-bold text-[#F8FAFC] group-hover:text-[#22D3EE] transition-colors mb-2.5 leading-snug ${
+          className={`font-bold text-[#F1F5F9] group-hover:text-[#22D3EE] transition-colors mb-2.5 leading-snug ${
             featured ? "text-xl sm:text-2xl" : "text-lg sm:text-xl"
           }`}
-          style={{ fontFamily: "var(--font-display)" }}
         >
-          <Link href={`/blog/${post.slug}`} className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] rounded">
+          <Link href={`/blog/${post.slug}`} className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] rounded">
             {post.title}
           </Link>
         </h3>
@@ -54,7 +51,7 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
           {post.tags.slice(0, 4).map((tag) => (
             <span
               key={tag}
-              className="px-2 py-0.5 text-[11px] font-mono rounded bg-[#1E293B] text-[#94A3B8] border border-[#334155]"
+              className="px-2 py-0.5 text-[11px] font-mono rounded-md bg-[rgba(255,255,255,0.04)] text-[#94A3B8] border border-[rgba(255,255,255,0.06)]"
             >
               #{tag}
             </span>
@@ -62,17 +59,20 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
         </div>
       </div>
 
-      {/* Footer / Read Link */}
-      <div className="pt-4 border-t border-[#334155] flex items-center justify-between mt-auto">
+      {/* Footer */}
+      <div className="pt-4 border-t border-[rgba(255,255,255,0.05)] flex items-center justify-between mt-auto">
         <div className="flex items-center gap-2 text-xs text-[#94A3B8]">
-          <span className="w-5 h-5 rounded-full bg-gradient-to-br from-[#3B82F6] to-[#22D3EE] flex items-center justify-center text-[10px] font-bold text-white font-mono">
+          <span
+            className="w-5 h-5 rounded-md flex items-center justify-center text-[10px] font-bold text-black font-mono"
+            style={{ background: "linear-gradient(135deg, #22D3EE, #3B82F6)" }}
+          >
             MN
           </span>
           <span>{post.author.name}</span>
         </div>
         <Link
           href={`/blog/${post.slug}`}
-          className="inline-flex items-center gap-1 text-xs font-semibold text-[#3B82F6] group-hover:text-[#22D3EE] group-hover:translate-x-1 transition-all"
+          className="inline-flex items-center gap-1 text-xs font-semibold text-[#22D3EE] group-hover:text-[#67E8F9] group-hover:translate-x-1 transition-all"
         >
           Read Guide
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

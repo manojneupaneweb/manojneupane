@@ -23,16 +23,16 @@ export default function FaqAccordion({ faqs }: FaqAccordionProps) {
         return (
           <div
             key={faq.question}
-            className="rounded-xl border border-[#334155] bg-[#111827]/80 overflow-hidden transition-all duration-200"
+            className="rounded-xl border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] overflow-hidden transition-all duration-200"
           >
             <button
               type="button"
               onClick={() => toggle(idx)}
               aria-expanded={isOpen}
-              className="w-full flex items-center justify-between p-4 text-left font-semibold text-sm sm:text-base text-[#F8FAFC] hover:text-[#22D3EE] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]"
+              className="w-full flex items-center justify-between p-4 text-left font-semibold text-sm sm:text-base text-[#F1F5F9] hover:text-[#22D3EE] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE]"
             >
               <span className="flex items-center gap-3">
-                <span className="text-[#3B82F6] font-mono text-xs">Q{idx + 1}.</span>
+                <span className="text-[#22D3EE] font-mono text-xs">Q{idx + 1}.</span>
                 <span>{faq.question}</span>
               </span>
               <svg
@@ -49,7 +49,7 @@ export default function FaqAccordion({ faqs }: FaqAccordionProps) {
             </button>
 
             {isOpen && (
-              <div className="px-4 pb-4 pt-1 text-sm text-[#94A3B8] leading-relaxed border-t border-[#334155]/60">
+              <div className="px-4 pb-4 pt-1 text-sm text-[#94A3B8] leading-relaxed border-t border-[rgba(255,255,255,0.06)]">
                 <p>{faq.answer}</p>
               </div>
             )}

@@ -139,7 +139,7 @@ export default function AdminShell({ children }: AdminShellProps) {
   ];
 
   return (
-    <div className="flex h-screen bg-[#080B14] text-[#F8FAFC] overflow-hidden font-sans">
+    <div data-admin className="on-dark flex h-screen bg-[#080B14] text-[#F8FAFC] overflow-hidden font-sans">
       {/* ─── LEFT SIDEBAR ──────────────────────────────────────── */}
       <aside
         className={`${

@@ -1,22 +1,23 @@
 "use client";
 
-import { useEffect, useRef, ReactNode } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 
 interface RevealWrapperProps {
   children: ReactNode;
   className?: string;
   delay?: number; // ms, e.g. 100, 200
+  direction?: "up" | "left" | "none";
 }
 
 /**
- * Lightweight scroll-reveal wrapper.
- * Animates children from left (24px offset) to their natural position
- * using CSS transitions + Intersection Observer. SSR-safe.
+ * Scroll-reveal wrapper using IntersectionObserver.
+ * Animates children from offset to natural position once they enter the viewport.
  */
 export default function RevealWrapper({
   children,
   className = "",
   delay = 0,
+  direction = "up",
 }: RevealWrapperProps) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -24,23 +25,16 @@ export default function RevealWrapper({
     const el = ref.current;
     if (!el) return;
 
-    // Respect prefers-reduced-motion
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (prefersReduced) return;
-
-    // Initial hidden state
-    el.style.opacity = "0";
-    el.style.transform = "translateX(-24px)";
-    el.style.transition = `opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`;
+    const className = direction === "left" ? "reveal-left" : direction === "none" ? "" : "reveal";
+    if (className) el.classList.add(className);
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            el.style.opacity = "1";
-            el.style.transform = "translateX(0)";
+            setTimeout(() => {
+              el.classList.add("in-view");
+            }, delay);
             observer.unobserve(el);
           }
         });
@@ -50,7 +44,7 @@ export default function RevealWrapper({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [delay]);
+  }, [delay, direction]);
 
   return (
     <div ref={ref} className={className}>

@@ -13,18 +13,18 @@ export default function ArticleNavigation({
   relatedPosts,
 }: ArticleNavigationProps) {
   return (
-    <div className="mt-16 pt-10 border-t border-[#334155] space-y-12">
+    <div className="mt-16 pt-10 border-t border-[rgba(255,255,255,0.06)] space-y-12">
       {/* Prev / Next Navigation */}
       <nav aria-label="Previous and Next Articles" className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {prevPost ? (
           <Link
             href={`/blog/${prevPost.slug}`}
-            className="group card p-4 flex flex-col justify-between hover:border-[#3B82F6]/50 transition-all text-left"
+            className="group card p-4 flex flex-col justify-between hover:border-[rgba(34,211,238,0.3)] transition-all text-left"
           >
             <span className="text-xs text-[#94A3B8] flex items-center gap-1 mb-1">
               ← Previous Tutorial
             </span>
-            <span className="text-sm font-bold text-[#F8FAFC] group-hover:text-[#22D3EE] transition-colors line-clamp-2">
+            <span className="text-sm font-bold text-[#F1F5F9] group-hover:text-[#22D3EE] transition-colors line-clamp-2">
               {prevPost.title}
             </span>
           </Link>
@@ -35,12 +35,12 @@ export default function ArticleNavigation({
         {nextPost ? (
           <Link
             href={`/blog/${nextPost.slug}`}
-            className="group card p-4 flex flex-col justify-between hover:border-[#3B82F6]/50 transition-all text-right sm:text-right"
+            className="group card p-4 flex flex-col justify-between hover:border-[rgba(34,211,238,0.3)] transition-all text-right sm:text-right"
           >
             <span className="text-xs text-[#94A3B8] flex items-center justify-end gap-1 mb-1">
               Next Tutorial →
             </span>
-            <span className="text-sm font-bold text-[#F8FAFC] group-hover:text-[#22D3EE] transition-colors line-clamp-2">
+            <span className="text-sm font-bold text-[#F1F5F9] group-hover:text-[#22D3EE] transition-colors line-clamp-2">
               {nextPost.title}
             </span>
           </Link>
@@ -50,26 +50,26 @@ export default function ArticleNavigation({
       </nav>
 
       {/* Author Attribution Card */}
-      <div className="p-6 rounded-2xl border border-[#334155] bg-[#111827]/80 flex flex-col sm:flex-row items-center sm:items-start gap-5">
-        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#3B82F6] to-[#22D3EE] flex items-center justify-center text-white font-bold text-xl font-mono shrink-0 shadow-lg shadow-[#3B82F6]/20">
+      <div className="p-6 rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] flex flex-col sm:flex-row items-center sm:items-start gap-5">
+        <div className="w-16 h-16 rounded-md bg-gradient-to-br from-[#22D3EE] to-[#3B82F6] flex items-center justify-center text-black font-bold text-xl font-mono shrink-0">
           MN
         </div>
         <div className="space-y-2 text-center sm:text-left">
           <div className="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
-            <h4 className="font-bold text-[#F8FAFC] text-base">Written by Manoj Neupane</h4>
+            <h4 className="font-bold text-[#F1F5F9] text-base">Written by Manoj Neupane</h4>
             <span className="tag text-[10px]">Author</span>
           </div>
           <p className="text-xs text-[#22D3EE] font-mono">
-            Software Developer & Programming Instructor · Nepal 🇳🇵
+            Software developer and programming instructor, Nepal
           </p>
           <p className="text-xs text-[#94A3B8] leading-relaxed max-w-xl">
             Building software systems and SaaS platforms with Laravel, Next.js, and Node.js. Passionate about helping students and developers in Nepal master practical, real-world development skills.
           </p>
           <div className="pt-2 flex items-center justify-center sm:justify-start gap-4 text-xs font-semibold">
-            <Link href="/about" className="text-[#3B82F6] hover:underline">
+            <Link href="/about" className="text-[#22D3EE] hover:text-[#67E8F9] transition-colors">
               About Manoj →
             </Link>
-            <Link href="/contact" className="text-[#94A3B8] hover:text-[#F8FAFC] transition-colors">
+            <Link href="/contact" className="text-[#94A3B8] hover:text-[#F1F5F9] transition-colors">
               Ask a question / Suggest a guide
             </Link>
           </div>
@@ -80,10 +80,10 @@ export default function ArticleNavigation({
       {relatedPosts.length > 0 && (
         <section aria-labelledby="related-heading" className="space-y-4">
           <div className="flex items-center justify-between">
-            <h3 id="related-heading" className="text-lg font-bold text-[#F8FAFC]">
+            <h3 id="related-heading" className="text-lg font-bold text-[#F1F5F9]">
               Related Tutorials
             </h3>
-            <Link href="/blog" className="text-xs text-[#3B82F6] hover:underline">
+            <Link href="/blog" className="text-xs text-[#22D3EE] hover:text-[#67E8F9] transition-colors">
               View all tutorials →
             </Link>
           </div>
@@ -92,12 +92,12 @@ export default function ArticleNavigation({
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group card p-4 hover:border-[#3B82F6]/50 hover:shadow-lg transition-all"
+                className="group card p-4 hover:border-[rgba(34,211,238,0.3)] hover:shadow-glow-sm transition-all"
               >
-                <span className="text-[10px] font-mono font-medium text-[#818CF8] block mb-1">
+                <span className="text-[10px] font-mono font-medium text-[#22D3EE] block mb-1">
                   {post.category}
                 </span>
-                <h4 className="text-sm font-bold text-[#F8FAFC] group-hover:text-[#22D3EE] transition-colors line-clamp-2 mb-2">
+                <h4 className="text-sm font-bold text-[#F1F5F9] group-hover:text-[#22D3EE] transition-colors line-clamp-2 mb-2">
                   {post.title}
                 </h4>
                 <span className="text-[11px] text-[#94A3B8]">⏱️ {post.readingTime}</span>

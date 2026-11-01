@@ -110,7 +110,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
   } : null;
 
   return (
-    <main className="min-h-screen text-[#F8FAFC] pb-24 ">
+    <main className="min-h-screen text-[#F1F5F9] pb-24">
       {/* Article Schema JSON-LD */}
       <script
         type="application/ld+json"
@@ -124,8 +124,12 @@ export default function ArticlePage({ params }: ArticlePageProps) {
       )}
 
       {/* Article Hero Banner */}
-      <header className="border-b border-[#334155] py-14 sm:py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#111827]/40 to-transparent">
-        <div className="max-w-5xl mx-auto">
+      <header className="border-b border-[rgba(255,255,255,0.06)] py-14 sm:py-16 relative overflow-hidden">
+        {/* Background gradient */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 60% at 50% -20%, rgba(34,211,238,0.06) 0%, transparent 70%)" }} />
+        </div>
+        <div className="container relative">
           {/* Breadcrumb Navigation */}
           <Breadcrumbs
             items={[
@@ -138,7 +142,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 
           {/* Category & Metadata */}
           <div className="flex items-center gap-3 flex-wrap mb-4 text-xs">
-            <span className="inline-flex items-center px-3 py-1 rounded-full font-mono font-medium bg-[#3B82F6]/10 text-[#818CF8] border border-[#3B82F6]/30">
+            <span className="inline-flex items-center px-3 py-1 rounded-full font-mono font-medium bg-[rgba(34,211,238,0.1)] text-[#22D3EE] border border-[rgba(34,211,238,0.25)]">
               {post.category}
             </span>
             <span className="text-[#94A3B8]">⏱️ {post.readingTime}</span>
@@ -154,7 +158,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 
           {/* Main Title */}
           <h1
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-5"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-5 text-[#F1F5F9]"
             style={{ fontFamily: "var(--font-display)" }}
           >
             {post.title}
@@ -166,13 +170,13 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           </p>
 
           {/* Author Details & Tags */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-[#334155]/80">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-[rgba(255,255,255,0.06)]">
             <div className="flex items-center gap-3 text-xs">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#22D3EE] flex items-center justify-center text-white font-bold text-xs font-mono shrink-0">
+              <div className="w-8 h-8 rounded-md bg-gradient-to-br from-[#22D3EE] to-[#3B82F6] flex items-center justify-center text-black font-bold text-xs font-mono shrink-0">
                 MN
               </div>
               <div>
-                <span className="text-[#F8FAFC] font-semibold block">{post.author.name}</span>
+                <span className="text-[#F1F5F9] font-semibold block">{post.author.name}</span>
                 <span className="text-[#94A3B8] text-[11px]">{post.author.role}</span>
               </div>
             </div>
@@ -182,7 +186,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-2.5 py-0.5 text-xs font-mono rounded-md bg-[#1E293B] text-[#94A3B8] border border-[#334155]"
+                  className="tag font-mono"
                 >
                   #{tag}
                 </span>
@@ -193,7 +197,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
       </header>
 
       {/* Main Grid: Content + Table of Contents Sidebar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+      <div className="container pt-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-14">
           {/* Main Article Column (8 cols on lg) */}
           <article className="lg:col-span-8 min-w-0">
@@ -217,16 +221,16 @@ export default function ArticlePage({ params }: ArticlePageProps) {
               <TableOfContents items={tocItems} />
 
               {/* Quick Help Card */}
-              <div className="mt-6 p-5 rounded-2xl border border-[#334155] bg-[#111827]/50 text-xs text-[#94A3B8] space-y-2">
-                <div className="font-semibold text-[#F8FAFC] flex items-center gap-1.5">
+              <div className="mt-6 p-5 card border border-[rgba(34,211,238,0.1)] text-xs space-y-2">
+                <div className="font-semibold text-[#F1F5F9] flex items-center gap-1.5">
                   <span>💡</span> Need help implementing this?
                 </div>
-                <p className="leading-relaxed">
+                <p className="text-[#94A3B8] leading-relaxed">
                   Encountering an error not covered here? Feel free to reach out with your error logs.
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-1 text-[#22D3EE] font-semibold hover:underline pt-1"
+                  className="inline-flex items-center gap-1 text-[#22D3EE] font-semibold hover:text-[#67E8F9] transition-colors pt-1"
                 >
                   Contact Manoj →
                 </Link>

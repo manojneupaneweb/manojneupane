@@ -12,13 +12,13 @@ export const metadata: Metadata = buildMetadata({
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="min-h-screen text-[#F8FAFC] ">
+    <main className="min-h-screen text-[#F1F5F9] ">
       <section
         aria-labelledby="privacy-heading"
-        className="border-b border-[#334155] py-20 px-6"
+        className="border-b border-[rgba(255,255,255,0.06)] pt-28 pb-16 sm:pt-36 sm:pb-20"
       >
-        <div className="max-w-3xl mx-auto">
-          <p className="text-[#3B82F6] text-sm font-medium tracking-widest uppercase mb-3">
+        <div className="container">
+          <p className="text-[#22D3EE] text-sm font-medium tracking-widest uppercase mb-3">
             Legal
           </p>
           <h1
@@ -34,12 +34,12 @@ export default function PrivacyPolicyPage() {
         </div>
       </section>
 
-      <article className="max-w-3xl mx-auto px-6 py-16 space-y-12 text-[#94A3B8] leading-relaxed">
+      <article className="container py-16 space-y-12 text-[#94A3B8] leading-relaxed">
 
         <section aria-labelledby="intro-heading">
           <h2
             id="intro-heading"
-            className="text-xl font-bold text-[#F8FAFC] mb-4"
+            className="text-xl font-bold text-[#F1F5F9] mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Introduction
@@ -50,7 +50,7 @@ export default function PrivacyPolicyPage() {
             portfolio website at{" "}
             <a
               href={siteConfig.url}
-              className="text-[#3B82F6] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] rounded"
+              className="text-[#22D3EE] hover:text-[#67E8F9] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] rounded"
             >
               {siteConfig.url}
             </a>
@@ -62,14 +62,14 @@ export default function PrivacyPolicyPage() {
         <section aria-labelledby="data-collected-heading">
           <h2
             id="data-collected-heading"
-            className="text-xl font-bold text-[#F8FAFC] mb-4"
+            className="text-xl font-bold text-[#F1F5F9] mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             What Data Is Collected
           </h2>
           <div className="space-y-5">
             <div>
-              <h3 className="text-[#F8FAFC] font-semibold mb-2">Contact Form Submissions</h3>
+              <h3 className="text-[#F1F5F9] font-semibold mb-2">Contact Form Submissions</h3>
               <p>
                 When you use the contact form, I collect the information you provide:
                 your name, email address, and the content of your message. This information
@@ -78,7 +78,7 @@ export default function PrivacyPolicyPage() {
               </p>
             </div>
             <div>
-              <h3 className="text-[#F8FAFC] font-semibold mb-2">Server Logs</h3>
+              <h3 className="text-[#F1F5F9] font-semibold mb-2">Server Logs</h3>
               <p>
                 The hosting provider may automatically record server access logs that
                 include your IP address, browser user agent, the pages you visited, and
@@ -92,7 +92,7 @@ export default function PrivacyPolicyPage() {
         <section aria-labelledby="no-tracking-heading">
           <h2
             id="no-tracking-heading"
-            className="text-xl font-bold text-[#F8FAFC] mb-4"
+            className="text-xl font-bold text-[#F1F5F9] mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             No Analytics or Third-Party Tracking
@@ -108,7 +108,7 @@ export default function PrivacyPolicyPage() {
         <section aria-labelledby="data-retention-heading">
           <h2
             id="data-retention-heading"
-            className="text-xl font-bold text-[#F8FAFC] mb-4"
+            className="text-xl font-bold text-[#F1F5F9] mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Data Retention
@@ -124,7 +124,7 @@ export default function PrivacyPolicyPage() {
         <section aria-labelledby="your-rights-heading">
           <h2
             id="your-rights-heading"
-            className="text-xl font-bold text-[#F8FAFC] mb-4"
+            className="text-xl font-bold text-[#F1F5F9] mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Your Rights
@@ -138,7 +138,7 @@ export default function PrivacyPolicyPage() {
               "Information about how your data was used",
             ].map((right) => (
               <li key={right} className="flex gap-3">
-                <span className="text-[#3B82F6] flex-shrink-0" aria-hidden="true">▸</span>
+                <span className="text-[#22D3EE] flex-shrink-0" aria-hidden="true">▸</span>
                 {right}
               </li>
             ))}
@@ -147,7 +147,7 @@ export default function PrivacyPolicyPage() {
             To make any of these requests, email me at{" "}
             <a
               href={`mailto:${siteConfig.email}`}
-              className="text-[#3B82F6] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] rounded"
+              className="text-[#22D3EE] hover:text-[#67E8F9] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] rounded"
             >
               {siteConfig.email}
             </a>
@@ -158,7 +158,7 @@ export default function PrivacyPolicyPage() {
         <section aria-labelledby="links-heading">
           <h2
             id="links-heading"
-            className="text-xl font-bold text-[#F8FAFC] mb-4"
+            className="text-xl font-bold text-[#F1F5F9] mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             External Links
@@ -173,7 +173,7 @@ export default function PrivacyPolicyPage() {
         <section aria-labelledby="changes-heading">
           <h2
             id="changes-heading"
-            className="text-xl font-bold text-[#F8FAFC] mb-4"
+            className="text-xl font-bold text-[#F1F5F9] mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Changes to This Policy
@@ -188,7 +188,7 @@ export default function PrivacyPolicyPage() {
         <section aria-labelledby="contact-privacy-heading">
           <h2
             id="contact-privacy-heading"
-            className="text-xl font-bold text-[#F8FAFC] mb-4"
+            className="text-xl font-bold text-[#F1F5F9] mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Contact
@@ -197,7 +197,7 @@ export default function PrivacyPolicyPage() {
             For privacy-related questions or data requests, contact me at{" "}
             <a
               href={`mailto:${siteConfig.email}`}
-              className="text-[#3B82F6] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] rounded"
+              className="text-[#22D3EE] hover:text-[#67E8F9] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] rounded"
             >
               {siteConfig.email}
             </a>
@@ -205,10 +205,10 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
 
-        <div className="border-t border-[#334155] pt-8">
+        <div className="border-t border-[rgba(255,255,255,0.06)] pt-8">
           <Link
             href="/"
-            className="text-sm text-[#3B82F6] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] rounded"
+            className="text-sm text-[#22D3EE] hover:text-[#67E8F9] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] rounded"
           >
             ← Back to home
           </Link>

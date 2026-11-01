@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getAllPosts, getFeaturedPosts } from "@/lib/blog-data";
+import { getAllPosts } from "@/lib/blog-data";
 import { buildMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/data";
 import BlogSearchFilter from "@/components/blog/BlogSearchFilter";
@@ -15,7 +15,6 @@ export const metadata: Metadata = buildMetadata({
 
 export default function BlogHomePage() {
   const allPosts = getAllPosts();
-  const featuredPosts = getFeaturedPosts();
 
   const blogJsonLd = {
     "@context": "https://schema.org",
@@ -42,15 +41,12 @@ export default function BlogHomePage() {
       url: `${siteConfig.url}/blog/${post.slug}`,
       datePublished: post.publishedAt,
       dateModified: post.updatedAt,
-      author: {
-        "@type": "Person",
-        name: post.author.name,
-      },
+      author: { "@type": "Person", name: post.author.name },
     })),
   };
 
   return (
-    <main className="min-h-screen text-[#F8FAFC] pb-24 ">
+    <main className="min-h-screen pb-24">
       {/* Blog Schema JSON-LD */}
       <script
         type="application/ld+json"
@@ -60,10 +56,17 @@ export default function BlogHomePage() {
       {/* Hero Header */}
       <section
         aria-labelledby="blog-heading"
-        className="relative border-b border-[#334155] py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#111827]/40 to-transparent"
+        className="relative pt-28 pb-16 sm:pt-36 sm:pb-20 overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto">
-          {/* Breadcrumb */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(34,211,238,0.15)] to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(34,211,238,0.08)] to-transparent" />
+          <div
+            className="absolute top-1/4 right-0 w-[500px] h-[400px] rounded-full opacity-10"
+            style={{ background: "radial-gradient(circle, rgba(168,85,247,0.4) 0%, transparent 70%)" }}
+          />
+        </div>
+        <div className="container relative">
           <Breadcrumbs
             items={[
               { name: "Home", url: "/" },
@@ -71,11 +74,11 @@ export default function BlogHomePage() {
             ]}
           />
 
-          <div className="max-w-3xl space-y-4">
+          <div className="max-w-3xl space-y-5 mt-4">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[#3B82F6]/30 bg-[#3B82F6]/10 text-xs font-mono text-[#3B82F6] uppercase tracking-widest">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#22D3EE] animate-pulse" />
-                Technical Education · Nepal 🇳🇵
+              <span className="hero-badge">
+                <span className="live-dot w-1.5 h-1.5 mr-1" />
+                Technical notes from Nepal
               </span>
               <span className="text-xs text-[#94A3B8] font-mono">
                 {allPosts.length} Comprehensive Tutorials
@@ -84,10 +87,10 @@ export default function BlogHomePage() {
 
             <h1
               id="blog-heading"
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight"
-              style={{ fontFamily: "var(--font-display)" }}
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.08] tracking-tight text-[#F1F5F9]"
             >
-              Nepali Developer <span className="gradient-text">Guide</span>
+              Nepali Developer{" "}
+              <span className="gradient-text">Guide</span>
             </h1>
 
             <p className="text-lg sm:text-xl text-[#94A3B8] leading-relaxed">
@@ -96,21 +99,24 @@ export default function BlogHomePage() {
 
             {/* Author note */}
             <div className="pt-2 flex items-center gap-3 text-xs text-[#94A3B8]">
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#22D3EE] flex items-center justify-center text-white font-bold text-xs font-mono">
+              <div
+                className="w-8 h-8 rounded-lg flex items-center justify-center text-black font-bold text-xs font-mono flex-shrink-0"
+                style={{ background: "linear-gradient(135deg, #22D3EE, #3B82F6)" }}
+              >
                 MN
               </div>
               <div>
-                <span className="text-[#F8FAFC] font-semibold">{siteConfig.name}</span>
-                <span className="mx-1.5">·</span>
-                <span>Software Developer & Programming Instructor</span>
+                <span className="text-[#F1F5F9] font-semibold">{siteConfig.name}</span>
+                <span className="mx-1.5 text-[#94A3B8]/40">·</span>
+                <span>Software Developer &amp; Programming Instructor</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Main Content: Search, Category Filters, and Article Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
+      {/* Main Content */}
+      <section className="container pt-4">
         <BlogSearchFilter posts={allPosts} />
       </section>
     </main>

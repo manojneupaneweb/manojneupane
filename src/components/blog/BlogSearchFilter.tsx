@@ -108,13 +108,13 @@ export default function BlogSearchFilter({ posts }: BlogSearchFilterProps) {
             onChange={(e) => handleSearchChange(e.target.value)}
             placeholder="Search guides (e.g. eSewa, Khalti, .np domain, cPanel, CORS, Vercel)..."
             aria-label="Search tutorial articles"
-            className="w-full pl-11 pr-4 py-3.5 rounded-xl bg-[#111827] border border-[#334155] text-[#F8FAFC] placeholder-[#64748B] text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] focus-visible:border-transparent transition-all shadow-inner"
+            className="w-full pl-11 pr-4 py-3.5 rounded-xl bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] text-[#F1F5F9] placeholder-[#94A3B8]/60 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] focus-visible:border-[#22D3EE] transition-all"
           />
           {searchQuery && (
             <button
               type="button"
               onClick={() => handleSearchChange("")}
-              className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-xs text-[#94A3B8] hover:text-[#F8FAFC]"
+              className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-xs text-[#94A3B8] hover:text-[#F1F5F9] transition-colors"
             >
               Clear
             </button>
@@ -132,10 +132,10 @@ export default function BlogSearchFilter({ posts }: BlogSearchFilterProps) {
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => handleCategoryChange(cat.value)}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] ${
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] font-mono ${
                   isActive
-                    ? "bg-[#3B82F6] text-white shadow-md shadow-[#3B82F6]/20 font-semibold"
-                    : "bg-[#111827] text-[#94A3B8] hover:text-[#F8FAFC] hover:bg-[#1E293B] border border-[#334155]"
+                    ? "bg-[rgba(34,211,238,0.15)] text-[#22D3EE] border border-[rgba(34,211,238,0.35)] font-semibold"
+                    : "bg-[rgba(255,255,255,0.04)] text-[#94A3B8] hover:text-[#F1F5F9] border border-[rgba(255,255,255,0.07)] hover:border-[rgba(34,211,238,0.2)]"
                 }`}
               >
                 {cat.label}
@@ -146,16 +146,16 @@ export default function BlogSearchFilter({ posts }: BlogSearchFilterProps) {
       </div>
 
       {/* Result Count Status & Per-Page Controls */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 text-xs text-[#94A3B8]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 text-xs text-[#94A3B8] font-mono">
         <div>
           <span>
-            Showing <strong className="text-[#F8FAFC]">{filteredPosts.length > 0 ? `${startIndex + 1}–${endIndex}` : "0"}</strong> of{" "}
-            <strong className="text-[#F8FAFC]">{filteredPosts.length}</strong> tutorials
+            Showing <strong className="text-[#F1F5F9]">{filteredPosts.length > 0 ? `${startIndex + 1}–${endIndex}` : "0"}</strong> of{" "}
+            <strong className="text-[#F1F5F9]">{filteredPosts.length}</strong> tutorials
             {selectedCategory !== "All" && ` in ${selectedCategory}`}
             {searchQuery && ` matching "${searchQuery}"`}
           </span>
           {totalPages > 1 && (
-            <span className="ml-2 font-mono text-[#64748B]">
+            <span className="ml-2 text-[#94A3B8]/60">
               (Page {safeCurrentPage} of {totalPages})
             </span>
           )}
@@ -170,7 +170,7 @@ export default function BlogSearchFilter({ posts }: BlogSearchFilterProps) {
                 setSelectedCategory("All");
                 setCurrentPage(1);
               }}
-              className="text-[#3B82F6] hover:underline"
+              className="text-[#22D3EE] hover:text-[#67E8F9] transition-colors"
             >
               Reset filters
             </button>
@@ -178,7 +178,7 @@ export default function BlogSearchFilter({ posts }: BlogSearchFilterProps) {
 
           {/* Per-Page Selector */}
           <div className="flex items-center gap-1.5">
-            <span className="text-[#64748B]">Per page:</span>
+            <span className="text-[#94A3B8]/60">Per page:</span>
             {[6, 9, 12].map((num) => (
               <button
                 key={num}
@@ -187,10 +187,10 @@ export default function BlogSearchFilter({ posts }: BlogSearchFilterProps) {
                   setPostsPerPage(num);
                   setCurrentPage(1);
                 }}
-                className={`px-2 py-0.5 rounded text-[11px] font-mono transition-colors ${
+                className={`px-2 py-0.5 rounded text-[11px] font-mono transition-all ${
                   postsPerPage === num
-                    ? "bg-[#3B82F6] text-white font-semibold"
-                    : "bg-[#111827] text-[#94A3B8] hover:text-[#F8FAFC] border border-[#334155]"
+                    ? "bg-[rgba(34,211,238,0.15)] text-[#22D3EE] border border-[rgba(34,211,238,0.3)] font-semibold"
+                    : "bg-[rgba(255,255,255,0.04)] text-[#94A3B8] hover:text-[#F1F5F9] border border-[rgba(255,255,255,0.06)]"
                 }`}
               >
                 {num}
@@ -209,26 +209,22 @@ export default function BlogSearchFilter({ posts }: BlogSearchFilterProps) {
             ))}
           </div>
 
-          {/* Pagination Navigation Bar */}
           {totalPages > 1 && (
             <nav
               aria-label="Blog pagination"
-              className="mt-12 pt-8 border-t border-[#334155] flex flex-col sm:flex-row items-center justify-between gap-4"
+              className="mt-12 pt-8 border-t border-[rgba(255,255,255,0.06)] flex flex-col sm:flex-row items-center justify-between gap-4"
             >
-              {/* Left: Summary */}
-              <div className="text-xs text-[#94A3B8]">
-                Page <strong className="text-[#F8FAFC]">{safeCurrentPage}</strong> of{" "}
-                <strong className="text-[#F8FAFC]">{totalPages}</strong>
+              <div className="text-xs text-[#94A3B8] font-mono">
+                Page <strong className="text-[#F1F5F9]">{safeCurrentPage}</strong> of{" "}
+                <strong className="text-[#F1F5F9]">{totalPages}</strong>
               </div>
 
-              {/* Center / Right: Page Controls */}
               <div className="flex items-center gap-1.5 flex-wrap justify-center">
-                {/* Previous Button */}
                 <button
                   type="button"
                   onClick={() => handlePageChange(safeCurrentPage - 1)}
                   disabled={safeCurrentPage === 1}
-                  className="px-3 py-1.5 rounded-lg text-xs font-medium border border-[#334155] bg-[#111827] text-[#94A3B8] hover:text-[#F8FAFC] hover:bg-[#1E293B] disabled:opacity-30 disabled:pointer-events-none transition-all flex items-center gap-1"
+                  className="px-3 py-1.5 rounded-lg text-xs font-medium border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.04)] text-[#94A3B8] hover:text-[#F1F5F9] hover:border-[rgba(34,211,238,0.25)] disabled:opacity-30 disabled:pointer-events-none transition-all flex items-center gap-1 font-mono"
                   aria-label="Go to previous page"
                 >
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -237,14 +233,10 @@ export default function BlogSearchFilter({ posts }: BlogSearchFilterProps) {
                   <span>Prev</span>
                 </button>
 
-                {/* Page Number Buttons */}
                 {pageNumbers.map((p, idx) => {
                   if (p === "...") {
                     return (
-                      <span
-                        key={`ellipsis-${idx}`}
-                        className="px-2 py-1.5 text-xs text-[#64748B] select-none"
-                      >
+                      <span key={`ellipsis-${idx}`} className="px-2 py-1.5 text-xs text-[#94A3B8]/40 select-none font-mono">
                         ...
                       </span>
                     );
@@ -257,10 +249,10 @@ export default function BlogSearchFilter({ posts }: BlogSearchFilterProps) {
                       type="button"
                       onClick={() => handlePageChange(p)}
                       aria-current={isActive ? "page" : undefined}
-                      className={`min-w-[34px] h-[34px] px-2 rounded-lg text-xs font-mono font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] ${
+                      className={`min-w-[34px] h-[34px] px-2 rounded-lg text-xs font-mono font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22D3EE] ${
                         isActive
-                          ? "bg-gradient-to-r from-[#3B82F6] to-[#22D3EE] text-white font-bold shadow-md shadow-[#3B82F6]/30"
-                          : "bg-[#111827] text-[#94A3B8] hover:text-[#F8FAFC] hover:bg-[#1E293B] border border-[#334155]"
+                          ? "bg-gradient-to-r from-[#22D3EE] to-[#3B82F6] text-black font-bold shadow-glow-sm"
+                          : "bg-[rgba(255,255,255,0.04)] text-[#94A3B8] hover:text-[#F1F5F9] border border-[rgba(255,255,255,0.07)] hover:border-[rgba(34,211,238,0.2)]"
                       }`}
                     >
                       {p}
@@ -268,12 +260,11 @@ export default function BlogSearchFilter({ posts }: BlogSearchFilterProps) {
                   );
                 })}
 
-                {/* Next Button */}
                 <button
                   type="button"
                   onClick={() => handlePageChange(safeCurrentPage + 1)}
                   disabled={safeCurrentPage === totalPages}
-                  className="px-3 py-1.5 rounded-lg text-xs font-medium border border-[#334155] bg-[#111827] text-[#94A3B8] hover:text-[#F8FAFC] hover:bg-[#1E293B] disabled:opacity-30 disabled:pointer-events-none transition-all flex items-center gap-1"
+                  className="px-3 py-1.5 rounded-lg text-xs font-medium border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.04)] text-[#94A3B8] hover:text-[#F1F5F9] hover:border-[rgba(34,211,238,0.25)] disabled:opacity-30 disabled:pointer-events-none transition-all flex items-center gap-1 font-mono"
                   aria-label="Go to next page"
                 >
                   <span>Next</span>
@@ -287,9 +278,9 @@ export default function BlogSearchFilter({ posts }: BlogSearchFilterProps) {
         </>
       ) : (
         /* Empty State */
-        <div className="text-center py-16 px-4 rounded-2xl border border-[#334155] bg-[#111827]/60">
+        <div className="text-center py-16 px-4 card border border-[rgba(255,255,255,0.06)]">
           <div className="text-4xl mb-3">🔍</div>
-          <h3 className="text-lg font-bold text-[#F8FAFC] mb-2">No tutorials found</h3>
+          <h3 className="text-lg font-bold text-[#F1F5F9] mb-2">No tutorials found</h3>
           <p className="text-sm text-[#94A3B8] max-w-md mx-auto mb-6">
             We couldn&apos;t find any articles matching your search. Try different keywords or browse all categories.
           </p>

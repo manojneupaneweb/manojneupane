@@ -18,7 +18,7 @@ export const siteConfig = {
   profileImage: "/images/manoj-neupane.jpg",
   tagline: "I build software that solves real problems.",
   subTagline:
-    "Specialized in Node.js, Laravel, and Next.js — building web applications, SaaS platforms, and business systems designed around real workflows, maintainable architecture, and reliable production use.",
+    "I build web applications, SaaS platforms, and business systems with Node.js, Laravel, and Next.js.",
 };
 
 // ─── Projects ────────────────────────────────────────────────
@@ -34,7 +34,7 @@ export type Project = {
   liveUrl?: string;
   repoUrl?: string;
   featured: boolean;
-  status: "live" | "in-progress" | "concept";
+  status: "live" | "in-progress" | "concept" | "sample";
   thumbnail?: string;
   problem?: string;
   audience?: string;
@@ -75,6 +75,113 @@ export const projects: Project[] = [
       "Keeping government URLs current is an ongoing challenge since Nepal's government websites frequently move, restructure, or go offline. The verification system tracks when each URL was last confirmed working.",
     outcome:
       "A verified, production-deployed application serving citizens who need reliable access to Nepal's official online presence.",
+  },
+  {
+    slug: "hiresense",
+    title: "Hiresense",
+    tagline: "A first-round interview with a score a reviewer can check.",
+    description:
+      "Hiresense runs a live interview, scores communication, confidence, and technical knowledge from 0 to 10, and stores the reasoning plus a quote from the candidate's own words. A person still records advance, hold, or reject. The model does not hire anyone.",
+    category: "Web Application",
+    stack: ["React", "Node.js", "Express", "MongoDB", "Socket.io", "Gemini", "JWT"],
+    contribution:
+      "Built the candidate and recruiter apps, the scoring agent, and the review step that keeps the hiring decision with a person.",
+    repoUrl: "https://github.com/manojneupaneweb/Hiresense",
+    featured: true,
+    status: "sample",
+    problem:
+      "A first screen is slow when every answer has to be read by hand, and an automated score is useless if nobody can see why it was given.",
+    features: [
+      "JWT sign-in for candidates and recruiters",
+      "Live interview over Socket.io, with questions from Gemini",
+      "Scores of 0 to 10 with a reason and an evidence quote",
+      "CV match when a Gemini key is set; PDF only, 10 MB",
+      "Reviewer decision endpoint. The model does not hire anyone",
+      "OpenAPI docs and an eval set with a name-swap check",
+    ],
+    challenges:
+      "Without an OpenAI key the scorer falls back to length, hedging, and a fixed term list. That is explainable. It is not a measure of job performance.",
+    outcome:
+      "A public sample of an interview pipeline where the score can be audited and the decision stays with a reviewer.",
+  },
+  {
+    slug: "gogain",
+    title: "GoGain",
+    tagline: "Gym memberships and a shop, with payments checked on the server.",
+    description:
+      "Members register with an email code, buy a plan, and order from the catalog. Trainers log daily activity. Admins manage products, orders, roles, and contact messages. Plan prices live in code. Khalti and eSewa amounts are computed on the server, and an order is marked paid only after the provider lookup matches.",
+    category: "Web Application",
+    stack: ["React", "Vite", "PHP", "MySQL", "Khalti", "eSewa"],
+    contribution:
+      "Built the member, trainer, and admin flows, plus cookie auth, CSRF, and payment verification.",
+    repoUrl: "https://github.com/manojneupaneweb/GoGain",
+    featured: true,
+    status: "sample",
+    features: [
+      "Plans from 30 to 365 days, priced in code",
+      "Catalog, cart, and orders. Shipping is 0 over 100, otherwise 10",
+      "httpOnly access and refresh cookies, with refresh rotation",
+      "CSRF header required on unsafe methods",
+      "Khalti and eSewa confirmation is idempotent",
+      "Role is read from the users table on each request",
+    ],
+    outcome:
+      "A public sample of a shop and membership API where the client cannot set the paid amount.",
+  },
+  {
+    slug: "matchify-ai",
+    title: "Matchify AI",
+    tagline: "One resume, one job description, a score the model does not invent.",
+    description:
+      "Upload a PDF, paste a job description, and get a score, matched skills, missing skills, and a few rewrite ideas. The number is calculated in code: 50% must-have skills, 20% nice-to-have, 20% keywords, 10% experience. Reports are saved to the account.",
+    category: "Web Application",
+    stack: ["Next.js", "TypeScript", "MongoDB", "Gemini", "NextAuth", "Zod"],
+    contribution:
+      "Designed the agent loop, kept scoring in application code, and stored analyses per account.",
+    repoUrl: "https://github.com/manojneupaneweb/Matchify-AI",
+    featured: true,
+    status: "sample",
+    problem:
+      "A model that returns the score will invent one. A job seeker still needs to see which skills matched and which did not.",
+    features: [
+      "PDF plus a pasted job description, with progress over server-sent events",
+      "Score computed in lib/scoring.ts, not by the model",
+      "Keyword tools and bullet rewrites, then a second score",
+      "Google, GitHub, and email login. Saved reports, 10 per page",
+      "Resume and job text treated as untrusted input",
+      "Same resume and job description within an hour reuse the cached draft",
+    ],
+    challenges:
+      "No OCR. A scanned PDF comes back as unreadable. PDF only, at most 5 MB and 10 pages.",
+    outcome:
+      "A public sample of an analyzer where the weights are fixed and tested, including empty, full match, miss, and a few synonyms.",
+  },
+  {
+    slug: "techsphere",
+    title: "TechSphere",
+    tagline: "An electronics shop. The cart total is signed on the server.",
+    description:
+      "Shoppers browse products, keep a cart and a wishlist, and pay through eSewa. Admins manage the catalog, users, and order status. The server signs the eSewa payload from cart rows. An order is created only after eSewa reports the payment as complete.",
+    category: "Web Application",
+    stack: ["React", "Vite", "Express", "MySQL", "Sequelize", "eSewa"],
+    contribution:
+      "Built the storefront, the catalog API, cookie auth, and the eSewa checkout path.",
+    liveUrl: "https://tech-sphere-blush.vercel.app",
+    repoUrl: "https://github.com/manojneupaneweb/TechSphere",
+    featured: true,
+    status: "live",
+    features: [
+      "Product search, category, and brand pages",
+      "Cart and wishlist for a signed-in user",
+      "JWT in httpOnly cookies, plus a CSRF check on writes",
+      "eSewa amount taken from the database, not the browser",
+      "Admin catalog, role changes, and order status",
+      "Product images limited to jpeg, png, or webp, at most 2 MB",
+    ],
+    challenges:
+      "Pending eSewa checkouts currently live in process memory, so a restart during payment drops them.",
+    outcome:
+      "A public shop sample with a live storefront and a checkout the client cannot mark as paid.",
   },
   {
     slug: "saas-multi-tenant",
@@ -261,7 +368,7 @@ export const experiences: Experience[] = [
     organization: "Softworica",
     organizationUrl: "https://softworica.com",
     type: "Software Company",
-    period: "2+ years of experience",
+    period: "2.5+ years of professional experience",
     current: true,
     responsibilities: [
       "Developing web applications, SaaS platforms, and business systems",
